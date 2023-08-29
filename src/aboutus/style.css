@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+  
+header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+h1 {
+    font-family:楷体;
+    font-size: 50px;
+    margin: 0;
+}
+  
+.nav a {
+    color: #fff;
+    font-size:20px;
+    text-decoration: none;
+    margin-left: 20px;
+}
+  
+.team-members {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+  
+.member{
+    background-color: #fff;
+    margin-top:8%;
+    margin-left:1%;
+    margin-right:2%;
+    width:13%;
+    height:300px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+  
+img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top:5%;
+    margin-bottom: 20px;
+}
+  
+h2{
+    font-size: 35px;
+    font-family:仿宋;
+    margin: 0;
+}
+  
+p{
+    font-size: 15px;
+    color: #666;
+}
+button {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #f1f5f7;
+    color: #0d0d0d;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 50px;
+}

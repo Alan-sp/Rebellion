@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fighting!</title>
+    <style>
+        #skill1 {
+            position: absolute;
+            left: 600px;
+            top: 700px;
+        }
+            
+        #skill2 {
+            position: absolute;
+            left: 800px;
+            top: 700px;
+        }
+
+        #skill3 {
+            position: absolute;
+            left: 1000px;
+            top: 700px;
+        }
+
+        #skill4 {
+            position: absolute;
+            left: 1200px;
+            top: 700px;
+        }
+        #game-container {
+            position: relative;
+        }
+        #my-hp {
+            position: absolute;
+            top: 100px;
+            left:300px;
+        }
+        #enemy-hp {
+            position: absolute;
+            top: 100px;
+            left:1200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <img id="skill1" src="skill1.jpg" width="100" height="100" onclick="attack(1)">
+        <img id="skill2" src="skill2.jpg" width="100" height="100" onclick="attack(2)">
+        <img id="skill3" src="skill3.jpg" width="100" height="100" onclick="attack(3)">
+        <img id="skill4" src="skill4.jpg" width="100" height="100" onclick="attack(4)">
+        <div id="my-hp">我的血量: <span id="my-hp-value">100</span></div>
+        <div id="enemy-hp">敌方血量: <span id="enemy-hp-value">100</span></div>
+    </div>
+    
+    <!--背景音乐-->
+     
+    <audio controls height="50" width="100">
+        <source src="fighting_bgm.mp3" type="audio/mpeg">
+        <source src="fighting_bgm.ogg" type="audio/ogg">
+        <embed height="50" width="100" src="fighting_bgm.mp3">
+    </audio>
+
+    <script>
+        // 初始化变量
+        let myHP = 100;
+        let enemyHP = 100;
+        const myATK = 20;
+        const myDEF = 30;
+        const enemyATK = 15;
+        const enemyDEF = 7;
+
+        // 更新屏幕上的血量显示
+        function updateHP() {
+            document.getElementById('my-hp-value').textContent = myHP;
+            document.getElementById('enemy-hp-value').textContent = enemyHP;
+        }
+
+        // 模拟攻击的函数
+        function attack(skill) {
+            // 根据技能的最小攻击倍率和最大攻击倍率计算伤害
+            const minDamage = [0, 1, 0.8, 0.5, 0.4][skill]; // 技能伤害倍率最大值
+            const maxDamage = [0, 1, 1.3, 1.6, 2][skill]; // 技能伤害倍率最小值
+            const damage = (Math.floor(Math.random() * (maxDamage - minDamage + 1)) + minDamage) * myATK;
+
+            // 考虑敌方防御，计算实际伤害
+            const effectiveDamage = damage * (1 - (enemyDEF / 1000));
+
+            // 扣除敌方血量
+            enemyHP -= effectiveDamage;
+            if (enemyHP < 0) {
+                enemyHP = 0;
+            }
+
+            // 更新敌方血量显示
+            updateHP();
+
+            // 检查游戏结束条件
+            if (myHP <= 0) {
+                alert('你失败了');
+            } else if (enemyHP <= 0) {
+                alert('胜利');
+            }
+
+            // 延迟后进行敌方攻击
+            setTimeout(enemyAttack, 1000);
+        }
+
+        // 模拟敌方攻击的函数
+            function enemyAttack() {
+                // 计算对玩家的伤害
+                const playerDamage = enemyATK * (1 - (myDEF / 1000));
+
+            // 扣除玩家血量
+            myHP -= playerDamage;
+            if (myHP < 0) {
+                myHP = 0;
+            }
+
+            // 更新玩家血量显示
+            updateHP();
+
+            // 检查游戏结束条件
+            if (myHP <= 0) {
+                alert('你失败了');
+            } else if (enemyHP <= 0) {
+                alert('胜利');
+            }
+        }
+
+        // 初始化时更新血量显示
+        updateHP();
+    </script>
+</body>
+</html>

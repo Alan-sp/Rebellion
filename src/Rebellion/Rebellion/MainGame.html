@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+
+<html>
+    <head>
+        <title>芝士标题</title>
+        <meta http-equiv="x-ua-compatible" content="ie=edge" charset="utf-8">
+        <meta name="contributors",  content="xxx">
+        
+        <!-- <link href=".css" type="text/css" rel="stylesheet"> -->
+    </head>
+
+    <body>
+        <div>
+            <canvas width="800" height="600" id="GameCanvas"></canvas>
+            <div></div>
+        </div>
+
+        <p class="instruction">
+            通过 <span>WASD</span> 操控角色进行移动
+        </p>
+
+        <svg>
+            <filter id="turbulence" filterUnits="objectBoundingBox" x="0" y="0" width="100%" height="100%">
+              <feTurbulence id="feturbulence" type="fractalNoise" numOctaves="3" seed="2"></feTurbulence>
+              <feDisplacementMap xChannelSelector="G" yChannelSelector="B" scale="20" in="SourceGraphic"></feDisplacementMap>
+            </filter>
+        </svg>
+
+        <script src="./js/Object.js"></script>
+        <script src="./js/GameImage.js"></script>
+        <script src="./js/Character.js"></script>
+        <script src="./js/KeyboardListener.js"></script>
+        <script src="./js/MainGame.js"></script>
+    </body>
+</html>

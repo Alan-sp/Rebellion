@@ -1,0 +1,62 @@
+body {
+  background-image:url("http://pic1.win4000.com/wallpaper/2/598a6d6019ef8.jpg");  
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.game-cover {
+  position:fixed;
+  width:80%;
+  height:80%;
+  background-image:url("https://img0.baidu.com/it/u=864592538,1528972971&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800");
+  background-size:cover;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  font-size: 90px;
+  font-family:'STXingkai';
+  color:#fff;
+  margin-top: 10px;
+}
+
+p {
+  font-size: 18px;
+  color: #cfbfbf;
+  margin-bottom: 20px;
+}
+
+.buttons {
+    position:fixed;
+    bottom:10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+  padding: 30px 50px;
+  font-size: 25px;
+  font-family:楷体;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 100px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+

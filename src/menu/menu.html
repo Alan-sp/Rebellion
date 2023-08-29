@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="menu.css"/>
+    <title>菜单</title>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="container" id="blur">
+        <img src="map.png">
+        
+    </div>
+    <div class="shell">
+        <a href="#" class="box"><i class="iconfont icon-account"></i><span>账号</span></a>
+        <a href="#" class="box"><i class="iconfont icon-bag"></i><span>背包</span></a>
+        <a href="#" onclick="openPopup()" class="box"><i class="iconfont icon-achievements"></i><span>成就</span></a>
+        <a href="#" onclick="openPopup2()" class="box"><i class="iconfont icon-memory"></i><span>回忆</span></a>
+        <a href="archive.html" class="box"><i class="iconfont icon-file"></i><span>存档</span></a>
+        <a href="../aboutus/main.html" class="box"><i class="iconfont icon-aboutus"></i><span>关于我们</span></a>
+        <a href="#" class="box"><i class="iconfont icon-exit"></i><span>退出</span></a>
+    </div>
+    <div id="popup">
+        <h1>成就</h1>
+        <div class="glory1">
+            <p>???</p>
+            <hr>
+        </div>
+        <a href="#" class="closebox" onclick="closePopup()">关闭</a>
+    </div>
+    <div id="popup2">
+        <h2>回忆</h2>
+        <div class="memory1">
+            <p>...</p>
+            <br>
+        </div>
+        <a href="#" class="closebox" onclick="closePopup2()">关闭</a>
+    </div>
+    <div class="achievement" id="achievement">
+        <div class="popup-reminder">
+            <p>新的成就！</p>
+            <button id="close">关闭</button>
+        </div>
+    </div>
+</body>
+
+
+</html> 

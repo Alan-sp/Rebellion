@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+
+#personalpage{
+	width:80%;
+	margin-left:100px;
+	margin-bottom:20px;
+}
+
+#personalpage p{
+	text-indent:2em;
+	font: normal 14px å¾®è½¯é›…é»‘;
+	line-height:24px;
+}
+
+#personalpage h2
+{
+	margin-right:10px;
+	margin-top:20px;
+	margin-bottom:5px;
+	font-family:å¾®è½¯é›…é»‘;
+}
+
+#personalpage h2 img{
+	float:right;
+}
+
+#personalpage h2 a:hover img{
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+}
+
+#personalpage .infolist{
+	margin-top:10px;
+	margin-bottom:5px;
+}
+
+#personalpage .personalimg{
+	float:left;
+	width:189px;
+	height:250px;
+	margin:5px 10px 5px 0px;
+}
+
+#paper p{
+	text-indent:0;
+	margin-left:2em;
+}

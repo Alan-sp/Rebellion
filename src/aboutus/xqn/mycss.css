@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(image/background.jpg) no-repeat;
+    background-size: cover;
+}
+
+.box1,.box2 {
+    color: rgb(245, 248, 248);
+    width: 450px;
+    height:450px;
+    position:relative;
+    left:10%;
+    display:inline-block;
+    background: rgba(75, 102, 221, 0.4);
+    padding: 40px;
+    text-align: center;
+    margin: 1%;
+    margin-top: 3%;
+    font-family:仿宋;
+}
+
+.box1 .box1-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.box1 h1 {
+    font-size: 50px;
+    letter-spacing: 4px;
+    font-weight:600;
+}
+
+.box1 h2,.box2 h2 {
+    font-size: 30px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2%;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
