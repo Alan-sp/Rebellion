@@ -1,0 +1,37 @@
+.NowTalk {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  height: 150px;
+  padding: 10px 10px 10px 180px;
+  font-family: "Microsoft Yahei";
+  background: var(--menu-background);
+  border-top: 1px solid var(--menu-border-color);
+  color: var(--menu-font-color);
+}
+.NowTalk_p {
+  margin: 0;
+  font-size: 20px;
+}
+.NowTalk span {
+  opacity: 0;
+}
+.NowTalk span.revealed {
+  opacity: 1;
+}
+
+.Talkbutton {
+  margin: 0;
+  font-size: 18px;  
+  padding:0;
+  -webkit-appearance: none;
+  background:none;
+  border:0;
+  font-family: Simsun;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+}
