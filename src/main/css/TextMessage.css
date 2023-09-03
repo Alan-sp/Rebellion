@@ -1,4 +1,4 @@
-.NowTalk {
+.TextMessage {
   position: absolute;
   left: 20px;
   right: 20px;
@@ -10,18 +10,18 @@
   border-top: 1px solid var(--menu-border-color);
   color: var(--menu-font-color);
 }
-.NowTalk_p {
+.TextMessage_p {
   margin: 0;
   font-size: 20px;
 }
-.NowTalk span {
+.TextMessage span {
   opacity: 0;
 }
-.NowTalk span.revealed {
+.TextMessage span.revealed {
   opacity: 1;
 }
 
-.Talkbutton {
+.TextMessage_button{
   margin: 0;
   font-size: 18px;  
   padding:0;

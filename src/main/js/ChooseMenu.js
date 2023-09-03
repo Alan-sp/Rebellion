@@ -1,7 +1,8 @@
 class ChooseMenu {
-    constructor({ choices, onComplete }) {
+    constructor({ choices, onComplete , map}) {
         this.choices = choices;
         this.onComplete = onComplete;
+        this.map = map;
     }
 
     getOptions(pageKey) {
@@ -10,13 +11,23 @@ class ChooseMenu {
         if (pageKey === "root") {
             return [
                 ...this.choices.map(choice => {//这里必须得用箭头函数，不能用 function(choice) {}
-                    return {
+                    return {    
                         label: choice.label,
                         description: choice.description,
                         handler: () => {
                             window.playerState.storyFlags[choice.storyflag] = true;
 
                             //成就系统
+                            if(choice.events)
+                            {
+                                for (let i = choice.events.length-1; i >= 0; i--) {
+                                const eventHandler = new OverworldEvent({
+                                  event: choice.events[i],
+                                  map: this.map,
+                                })
+                                eventHandler.init();
+                              }
+                            }
                             const currentUsername = window.localStorage.getItem("Sec-Sight-current-username");
                             const file = window.localStorage.getItem("second_sight_achievements_" + currentUsername);
                             let achievements = file ? JSON.parse(file) : {};

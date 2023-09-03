@@ -26,17 +26,12 @@ class TextMessage {
       this.done();
     });
 
-    this.actionListener = new KeyPressListener("Space", () => {
-      this.done();
-    })
-
   }
 
   done() {
 
     if (this.revealingText.isDone) {
       this.element.remove();
-      this.actionListener.unbind();
       this.onComplete();
     } else {
       this.revealingText.warpToDone();

@@ -26,7 +26,7 @@ class TitleScreen {
         label: "Archives",
         description: "Click this to save or load",
         handler: () => {
-          window.open("./progress/archive.html", '_self');
+          window.open("../menu/archive.html", '_self');
           resolve();
         }
       },

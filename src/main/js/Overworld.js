@@ -135,6 +135,7 @@ class Overworld {
     }
 
     //Start the first map
+    
     this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
 
     //Create controls
@@ -146,12 +147,5 @@ class Overworld {
 
     //Kick off the game!
     this.startGameLoop();
-
-    // this.map.startCutscene([
-    //   { type: "battle", enemyId: "beth" }
-    //   // { type: "changeMap", map: "DemoRoom"}
-    //   // { type: "textMessage", text: "This is the very first message!"}
-    // ])
-
   }
 }

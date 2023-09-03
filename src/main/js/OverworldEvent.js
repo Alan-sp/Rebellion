@@ -46,15 +46,13 @@ class OverworldEvent {
 
   textMessage(resolve) {
 
-    const hero = this.map.gameObjects["hero"];
-
-    if(this.event.disqulify && window.playerState.storyFlags.includes(this.event.disqulify))
+    if(this.event.disqualify && window.playerState.storyFlags.includes(this.event.disqualify[0]))
     {
       resolve();
       return;
     }
 
-    if(this.event.required && window.playerState.storyFlags.includes(this.event.required)==false)
+    if(this.event.required && window.playerState.storyFlags.includes(this.event.required[0])==false)
     {
       resolve();
       return;
@@ -84,8 +82,7 @@ class OverworldEvent {
         resolve();
       } 
     })
-    console.log("Debug");
-    message.init(document.querySelector(".game-container"))
+    message.init(document.querySelector(".game-container"));
   }
 
   changeMap(resolve) {
@@ -122,9 +119,6 @@ class OverworldEvent {
           this.map.isPaused = true;
           this.map.overworld.enter.unbind();
           this.map.overworld.esc.unbind();
-          //余些一些不影响下次读档游戏体验的eventListener清楚不掉
-          // this.map.overworld.directionInput.remove();
-          // this.map.overworld.removeHeroPositionCheck();
         }
       }
     });
@@ -132,10 +126,21 @@ class OverworldEvent {
   }
 
   addStoryFlag(resolve) {
+    if(this.event.disqualify && window.playerState.storyFlags.includes(this.event.disqualify))
+    {
+      resolve();
+      return;
+    }
+ 
+    if(this.event.required && window.playerState.storyFlags.includes(this.event.required)==false)
+    {
+      resolve();
+      return;
+    }
     window.playerState.storyFlags.push(this.event.flag);
-
-    //成就系统
+    console.log(this.event.flag);
     const currentUsername = window.localStorage.getItem("Sec-Sight-current-username");
+
     const file = window.localStorage.getItem("second_sight_achievements_" + currentUsername);
     let achievements = file ? JSON.parse(file) : {};
     achievements[this.event.flag] = true;
@@ -150,7 +155,8 @@ class OverworldEvent {
       choices: this.event.choices,
       onComplete: () => {
         resolve();
-      }
+      },
+      map: this.map,
     })
     chooseMenu.init(document.querySelector(".game-container"));
   }
