@@ -5,6 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="src/cover/style.css">
   <title>游戏封面</title>
+  <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+  <audio id="music0" autoplay="autoplay" loop="loop" preload="preload" src="music/one-last-kiss.mp3"
+      volume="1.0"></audio>
+  <audio id="music1" autoplay="autoplay" loop="loop" preload="preload" src="music/one-last-kiss.mp3"
+      volume="1.0"></audio>
+  <script>
+      var nowplay, num = 0, nowvolume = 1;
+      window.localStorage.nowvolume = 1;
+      function musicplay() {
+          setInterval(function () {
+              if (nowplay != window.localStorage.nowbgm) {
+                  nowplay = window.localStorage.nowbgm;
+                 $("#music" + num).animate({ volume: "0.0" }, 2000);
+                  num = (num + 1) % 2; //取模，实现交叉渐变
+                  document.getElementById("music" + num).src = "music/" + window.localStorage.nowbgm + ".mp3";
+                  $("#music" + num).animate({ volume: nowvolume }, 2000);
+              }
+              if (nowvolume != window.localStorage.nowvolume) {
+                  nowvolume = window.localStorage.nowvolume;
+                  $("#music" + num).animate({ volume: nowvolume }, 200);
+              } // 音量调节
+          }, 1000);
+      }
+  </script>
 </head>
 <body>
   <canvas id="canvas"> </canvas>
@@ -16,7 +40,8 @@
       <p>准备好开始你的冒险之旅了吗？</p>
     </div>    
     <div class="buttons">
-      <a href="src/signin/login.html"><button class="play-button">注册/登录</button></a>
+      <a href="src/signin/signin.html" ><button class="play-button">注册/登录</button></a>
+      <button class="music-player" onclick="window.localStorage.nowbgm='one-last-kiss', musicplay()"></button>
       <a href="src/aboutus/main.html"><button class="options-button">关于我们</button></a>
    </div>
 </body>
