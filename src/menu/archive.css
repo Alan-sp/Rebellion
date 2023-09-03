@@ -5,7 +5,8 @@
 }
   
 body {
-    background-image:url("https://img95.699pic.com/photo/50498/5046.jpg_wh300.jpg");
+    background-image:url("https://i1.hdslb.com/bfs/archive/80aa0ed5fb21e8710180c9892eb470472832d91a.jpg");
+    background-size: cover;
 }
   
 h1{
@@ -24,8 +25,6 @@ p{
 }
   
 .container {
-    background-image:url("https://img95.699pic.com/photo/50498/5046.jpg_wh300.jpg");
-    background-clip:padding-box;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     position: fixed;
@@ -33,10 +32,15 @@ p{
     top: 10%;
     bottom:10%;
     right: 10%;
-    grid-gap: 100px;
+    grid-gap: 75px;
     padding: 10px 10px 10px 10px;  
   }
-  
+  .bg {
+    background-image:url(../Rebellion/Rebellion/images/card.jpeg);
+    background-clip:padding-box;
+    background-size: 100% 100%;
+    border-radius: 2rem;
+  }
   .container>div {/*选择container的直接子元素*/
     cursor: pointer;
     background-size: cover;
@@ -74,7 +78,7 @@ p{
   
 
   button {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(151, 149, 149, 0);
     border: 0 solid #e2e8f000;
     border-radius: 1rem;
     box-sizing: border-box;
