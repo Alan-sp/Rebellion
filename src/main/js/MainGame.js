@@ -26,32 +26,12 @@
             this.Obj.direction = "left";
             this.Refresh();
         });
-        this.SListener = new KeyboardListener(83,()=>
+        this.SListener = new KeyboardListener(68,()=>
         {
             this.Obj.direction = "down";
             this.Refresh();
         });
-        this.DListener = new KeyboardListener(68,()=>
-        {
-            this.Obj.direction = "right";
-            this.Refresh();
-        });
-        this.WListener = new KeyboardListener(38,()=>
-        {
-            this.Obj.direction = "up";
-            this.Refresh();
-        });
-        this.AListener = new KeyboardListener(37,()=>
-        {
-            this.Obj.direction = "left";
-            this.Refresh();
-        });
-        this.SListener = new KeyboardListener(40,()=>
-        {
-            this.Obj.direction = "down";
-            this.Refresh();
-        });
-        this.DListener = new KeyboardListener(39,()=>
+        this.DListener = new KeyboardListener(83,()=>
         {
             this.Obj.direction = "right";
             this.Refresh();
@@ -88,7 +68,8 @@ var test = new MainGame();
 test.Refresh();
 
 var testtext = new Dialogue({
-    text: "Just for test.",
-    osComplete: ()=>{},
+    text: "伴随着呼啸的风声，茂密的森林中有几辆马车疾驰而过，车上的士兵有的紧绷神经，眼观四方，有的则谈笑风生，滔滔不绝，身着银铠的男子在人群中沉默不语，显得格格不入。",
+    // onComplete(): ()=>{},
 });
 testtext.NewTalk(document.querySelector('.game'));
+// testtext.NewTalk(document.querySelector('.game'));

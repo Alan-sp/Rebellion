@@ -7,14 +7,30 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge" charset="utf-8">
         <meta name="contributors",  content="xxx">
         
+        <link href="./css/global.css" type="text/css" rel="stylesheet">
         <link href="./css/TextMessage.css" type="text/css" rel="stylesheet">
+        <link href="./css/SceneTransition.css" type="text/css" rel="stylesheet">
+        <link href="./css/KeyboardMenu.css" type="text/css" rel="stylesheet">
+        <link href="./css/TitleScreen.css" type="text/css" rel="stylesheet">
+        <link href="./css/Menus.css" type="text/css" rel="stylesheet">
+        <link href="./css/toEmbed.css" type="text/css" rel="stylesheet">
+        <link href="./css/role.css" type="text/css" rel="stylesheet">
     </head>
 
     <body>
         <div id="body">
-            <div class="game">
-                <canvas width="1000" height="600" id="GameCanvas"></canvas>
-                <div></div>
+            <div class="game-container">
+                <canvas class="game-canvas" width="800" height="500"></canvas>
+                <div id="role">
+                    <div id="hero" class="lihui"></div>
+                    <div id="Rebellion" class="lihui"></div>
+                    <div id="mum" class="lihui"></div>
+                    <div id="boss" class="lihui"></div>
+                    <div id="dad" class="lihui"></div>
+                    <div id="kp" class="lihui"></div>
+                    <div id="bianju" class="lihui"></div>
+                    <div id="interact" class="lihui"></div>
+                  </div>
             </div>
 
             <p class="title" >
@@ -33,12 +49,25 @@
             </filter>
         </svg>
 
-        <script src="./js/Object.js"></script>
-        <script src="./js/GameImage.js"></script>
-        <script src="./js/GameEvent.js"></script>
-        <script src="./js/Character.js"></script>
-        <script src="./js/Dialogue.js"></script>
-        <script src="./js/KeyboardListener.js"></script>
-        <script src="./js/MainGame.js"></script>
+        <script src="./State/PlayerState.js"></script>
+        <script src="./js/TweenMax.min.js"></script>
+        <script src="./js/utils.js"></script>
+        <script src="./js//DirectionInput.js"></script>
+        <script src="./js/Overworld.js"></script>
+        <script src="./js/GameObject.js"></script>
+        <script src="./js/Person.js"></script>
+        <script src="./js/Sprite.js"></script>
+        <script src="./js/OverworldMap.js"></script>
+        <script src="./js/OverworldEvent.js"></script>
+        <script src="./js/TextMessage.js"></script>
+        <script src="./js/KeyPressListener.js"></script>
+        <script src="./js/RevealingText.js"></script>
+        <script src="./js/SceneTransition.js"></script>
+        <script src="./js/KeyboardMenu.js"></script>
+        <script src="./js/PauseMenu.js"></script>
+        <script src="./js/ChooseMenu.js"></script>
+        <script src="./progress/Progress.js"></script>
+        <script src="./js/TitleScreen.js"></script>
+        <script src="./js/init.js"></script>
     </body>
 </html>

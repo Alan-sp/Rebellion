@@ -3,7 +3,7 @@
     constructor(config)
     {
         this.text = config.text;
-        this.isComplete = config.isComplete;
+        this.isComplete = false;
         this.speed = 60;
         this.element = null;
         this.talk = null;
@@ -53,9 +53,9 @@
             <button class="Talkbutton">Next</button>
         `)
         
-        this.element.querySelector("button").addEventListener("click",this.end());
-        this.Listener1 = new KeyboardListener("Space",()=>{this.end()});
-        this.Listener2 = new KeyboardListener("Enter",()=>{this.end()});
+        this.element.querySelector("button").addEventListener("click",()=>{this.end()});
+        this.Listener1 = new KeyboardListener(32,()=>{this.end()});
+        this.Listener2 = new KeyboardListener(13,()=>{this.end()});
         
         Contains.appendChild(this.element);
         this.talk = this.element.querySelector(".NowTalk_p");
@@ -69,7 +69,7 @@
             this.element.remove();
             // this.Listener1.unbind();
             // this.Listener2.unbind();
-            this.config.onComplete();
+            // this.config.onComplete();
         }
         else 
         {

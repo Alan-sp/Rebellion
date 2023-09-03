@@ -1,0 +1,81 @@
+.TitleScreen {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 20px;
+  bottom: 20px;
+  background: url(../images/cover-lower.png) no-repeat;
+  background-size: cover;
+  font-family: Microsoft YaHei,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.TitleScreen_logo {
+  display: none;
+  margin: 0 auto;
+  width: 400px;
+  image-rendering: pixelated;
+}
+
+.TitleScreen .KeyboardMenu {
+  position: absolute;
+  padding: 15px 10px;
+  width: 180px;
+  margin: 0 auto;
+  background: #00000033;
+  border: 0;
+  top: 180px;
+  right: 50px;
+  border-radius: 5px;
+}
+.TitleScreen button {
+  color: #fff;
+  justify-content: center;
+  padding:0;
+  font-size: 20px;
+  height: 30px;
+}
+
+.TitleScreen .DescriptionBox {
+  background: #00000066;
+  color: #fff;
+  border: 0;
+  padding: 5px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+}
+.TitleScreen .DescriptionBox p {
+  font-size: 15px;
+}
+
+.TitleScreen #water {
+    position: absolute;
+    height: 125px;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    background-image: url(../images/cover-lower.png);
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    -webkit-filter: url("#turbulence");
+    filter: url("#turbulence");
+}
+
+.TitleScreen #upper {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: -1px;
+    background-image: url(../images/cover-upper.png);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+
+#svgFilter {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 200px;
+    height: 100px;
+}
