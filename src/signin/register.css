@@ -9,10 +9,11 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url("https://img95.699pic.com/photo/50498/5046.jpg_wh300.jpg");
+    background: url("../Rebellion/Rebellion/images/stars.jpg");
     background-size: cover;
     background-repeat:no-repeat;
     background-size:100%;
+    overflow:hidden;
 }
 h1{
     color: rgba(255,255,255,0.7);
@@ -30,7 +31,7 @@ h1{
     height: 390px;
     border: 1px solid rgba(255,255,255,0.2);
     backdrop-filter: blur(5px);
-    background: rgba(50,50,50,0.4);
+    background: rgba(50,50,50,0.5);
     margin-top: 20px;
 }
 
@@ -103,4 +104,5 @@ button:hover {
     border:  1px solid rgba(255,255,255,0.8);
     background: rgba(255,255,255,0.5);
 }
+
 
