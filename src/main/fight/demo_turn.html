@@ -34,14 +34,70 @@
         #my-hp {
             position: absolute;
             top: 100px;
-            left:300px;
+            left:200px;
         }
         #enemy-hp {
             position: absolute;
             top: 100px;
-            left:1200px;
+            left:1000px;
         }
     </style>
+    <style>
+        body {
+            background-image: url('combat_background.jpg');
+            background-size: cover;
+            background-opacity: 0.8; /* 透明度设置为0.8 */
+        }
+        /* 其他样式保持不变 */
+
+    </style>
+
+    
+    <style>
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(3deg); }
+            50% { transform: translateX(5px) rotate(-3deg); }
+            75% { transform: translateX(-5px) rotate(3deg); }
+            100% { transform: translateX(5px) rotate(-3deg); }
+        }
+
+        #en.shaking {
+            animation: shake 0.5s infinite;
+        }
+    </style>
+    <style>
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(3deg); }
+            50% { transform: translateX(5px) rotate(-3deg); }
+            75% { transform: translateX(-5px) rotate(3deg); }
+            100% { transform: translateX(5px) rotate(-3deg); }
+        }
+
+        #me.shaking {
+            animation: shake 0.5s infinite;
+        }
+    </style>
+
+    <style>
+        /* 新增样式用于控制结果文本 */
+        #game-result {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0);
+            color: #ef8606;
+            font-size: 100px;
+            font-family: "楷体", Arial, sans-serif;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+
+    
 </head>
 <body>
     <div id="game-container">
@@ -51,15 +107,15 @@
         <img id="skill4" src="skill4.jpg" width="100" height="100" onclick="attack(4)">
         <div id="my-hp">我的血量: <span id="my-hp-value">100</span></div>
         <div id="enemy-hp">敌方血量: <span id="enemy-hp-value">100</span></div>
+        <img id="my-image" src="your_my_image_url.jpg" width="500" height="20" style="position: absolute; left: 200px; top: 130px;">
+        <img id="enemy-image" src="your_enemy_image_url.jpg" width="500" height="20" style="position: absolute; left: 1000px; top: 130px;">
+        <img id = "me" src="me.jpg" width="300" height="360" style="position: absolute; left: 200px; top: 250px;">
+        <img id = "en" src="en.jpg" width="300" height="360" style="position: absolute; left: 1200px; top: 250px;">
+        <img id="run" src="run.jpg" width="170" height="92" style="position: absolute; left: 200px; top: 700px;" onclick="redirectToBackPage()">
+        <div id="game-result"></div>
     </div>
     
-    <!--背景音乐-->
-     
-    <audio controls height="50" width="100">
-        <source src="fighting_bgm.mp3" type="audio/mpeg">
-        <source src="fighting_bgm.ogg" type="audio/ogg">
-        <embed height="50" width="100" src="fighting_bgm.mp3">
-    </audio>
+    
 
     <script>
         // 初始化变量
@@ -69,15 +125,68 @@
         const myDEF = 30;
         const enemyATK = 15;
         const enemyDEF = 7;
+        let begin = 1; // 添加这行来初始化begin变量
+        
+        function redirectToBackPage() {//逃跑
+            // window.location.href = '../MainGame.html';//这里的链接改成别的
+            // utils.emitEvent("backToGame", completeHandler);//这里的链接改成别的
+            // window.close();
+            let btn = document.createElement("button");
+            btn.innerText = "back to game";
+            btn.classList.add("backToGame-button");
+            btn.addEventListener("click", () => { utils.emitEvent("backToGame", completeHandler) });
+            document.querySelector(".how-to-play").appendChild(btn);
+        }
 
         // 更新屏幕上的血量显示
         function updateHP() {
             document.getElementById('my-hp-value').textContent = myHP;
             document.getElementById('enemy-hp-value').textContent = enemyHP;
+            updateImages();
         }
+        function updateImages() {
+            const myImage = document.getElementById('my-image');
+            const enemyImage = document.getElementById('enemy-image');
+
+            myImage.style.width = 5*myHP + 'px';
+            enemyImage.style.width = 5*enemyHP + 'px';
+        }
+
+        function handleGameResult(resultText) {
+            const gameResultElement = document.getElementById('game-result');
+            gameResultElement.textContent = resultText;
+            gameResultElement.style.display = 'block';
+        }
+
+        function shakeEnemyImage() {
+            const enemyImage = document.getElementById('en');
+            enemyImage.classList.add('shaking');
+
+            // 使用setTimeout来停止抖动
+            setTimeout(function() {
+                enemyImage.classList.remove('shaking');
+            }, 100); // 这里的500表示抖动持续的时间，可以根据需要调整
+        }
+
+        function shakeMyImage() {
+            const myImage = document.getElementById('me');
+            myImage.classList.add('shaking');
+
+            // 使用setTimeout来停止抖动
+            setTimeout(function() {
+                myImage.classList.remove('shaking');
+            }, 100); // 这里的500表示抖动持续的时间，可以根据需要调整
+        }
+
+        updateHP();
+        // 调用updateImages函数，确保初始化时图片显示正确
+        updateImages();
+
 
         // 模拟攻击的函数
         function attack(skill) {
+            
+            
             // 根据技能的最小攻击倍率和最大攻击倍率计算伤害
             const minDamage = [0, 1, 0.8, 0.5, 0.4][skill]; // 技能伤害倍率最大值
             const maxDamage = [0, 1, 1.3, 1.6, 2][skill]; // 技能伤害倍率最小值
@@ -85,6 +194,8 @@
 
             // 考虑敌方防御，计算实际伤害
             const effectiveDamage = damage * (1 - (enemyDEF / 1000));
+
+            shakeEnemyImage();
 
             // 扣除敌方血量
             enemyHP -= effectiveDamage;
@@ -96,14 +207,16 @@
             updateHP();
 
             // 检查游戏结束条件
-            if (myHP <= 0) {
-                alert('你失败了');
-            } else if (enemyHP <= 0) {
-                alert('胜利');
+             if (enemyHP <= 0) {
+                handleGameResult('胜利');
+                window.open(this.event.path, '_self');
+            }
+            else{
+                // 延迟后进行敌方攻击
+                setTimeout(enemyAttack, 1000)
             }
 
-            // 延迟后进行敌方攻击
-            setTimeout(enemyAttack, 1000);
+            ;
         }
 
         // 模拟敌方攻击的函数
@@ -111,22 +224,23 @@
                 // 计算对玩家的伤害
                 const playerDamage = enemyATK * (1 - (myDEF / 1000));
 
-            // 扣除玩家血量
-            myHP -= playerDamage;
-            if (myHP < 0) {
-                myHP = 0;
-            }
+            
+                shakeMyImage();
 
-            // 更新玩家血量显示
-            updateHP();
+                // 扣除玩家血量
+                myHP -= playerDamage;
+                if (myHP < 0) {
+                    myHP = 0;
+                }
 
-            // 检查游戏结束条件
-            if (myHP <= 0) {
-                alert('你失败了');
-            } else if (enemyHP <= 0) {
-                alert('胜利');
+                // 更新玩家血量显示
+                updateHP();
+
+                // 检查游戏结束条件
+                if (myHP <= 0) {
+                    handleGameResult('失败');
+                }  
             }
-        }
 
         // 初始化时更新血量显示
         updateHP();

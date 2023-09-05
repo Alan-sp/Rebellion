@@ -46,13 +46,13 @@ class OverworldEvent {
 
   textMessage(resolve) {
 
-    if(this.event.disqualify && window.playerState.storyFlags.includes(this.event.disqualify[0]))
+    if(this.event.disqualify && window.playerState.storyFlags.includes(this.event.disqualify))
     {
       resolve();
       return;
     }
 
-    if(this.event.required && window.playerState.storyFlags.includes(this.event.required[0])==false)
+    if(this.event.required && window.playerState.storyFlags.includes(this.event.required)==false)
     {
       resolve();
       return;
@@ -184,12 +184,6 @@ class OverworldEvent {
     toEmbed.classList.add("toEmbed");
     document.querySelector("canvas").classList.add("toEmbed-canvas");
     container.appendChild(toEmbed);
-
-    let btn = document.createElement("button");
-    btn.innerText = "back to game";
-    btn.classList.add("backToGame-button");
-    btn.addEventListener("click", () => { utils.emitEvent("backToGame", completeHandler) });
-    document.querySelector(".how-to-play").appendChild(btn);
   }
 
   init() {

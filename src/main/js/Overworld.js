@@ -41,7 +41,13 @@ class Overworld {
           step();
         })
       }
+
+      if(window.playerState.storyFlags.includes("end?"))
+        window.localStorage.setItem("end?",1);
+      
+      console.log(window.playerState.storyFlags.includes("end?"))
     }
+
     step();
   }
 

@@ -75,7 +75,7 @@ class PauseMenu {
           description: "Go back to Title Page",
           handler: () => {
             this.close();
-            window.open("./game.html", '_self');
+            window.open("./MainGame.html", '_self');
           }
         },
         {

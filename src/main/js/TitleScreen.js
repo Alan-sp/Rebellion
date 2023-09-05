@@ -2,8 +2,8 @@ class TitleScreen {
   constructor({ progress }) {
     this.progress = progress;
   }
-
   getOptions(resolve) {
+    const file = window.localStorage.getItem("end?");
     const safeFile = this.progress.getSaveFile();
     return [
       {
@@ -20,6 +20,15 @@ class TitleScreen {
         handler: () => {
           this.close();
           resolve(safeFile);
+        }
+      } : null,
+      file ? {
+        label: "Awake",
+        description: "Begin your new journey",
+        handler: () => {
+          // window.playerStates.
+          this.close();
+          resolve();
         }
       } : null,
       {

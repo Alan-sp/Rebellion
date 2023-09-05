@@ -4,6 +4,10 @@
 <html>
     <head>
         <title>Rebellion</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="./css/menu.css"/>
+        <title>菜单</title>
+        <script src="./js/script.js"></script>
         <meta http-equiv="x-ua-compatible" content="ie=edge" charset="utf-8">
         <meta name="contributors",  content="xxx">
         
@@ -18,56 +22,256 @@
     </head>
 
     <body>
-        <div id="body">
-            <div class="game-container">
-                <canvas class="game-canvas" width="800" height="500"></canvas>
-                <div id="role">
-                    <div id="hero" class="lihui"></div>
-                    <div id="Rebellion" class="lihui"></div>
-                    <div id="mum" class="lihui"></div>
-                    <div id="boss" class="lihui"></div>
-                    <div id="dad" class="lihui"></div>
-                    <div id="kp" class="lihui"></div>
-                    <div id="bianju" class="lihui"></div>
-                    <div id="interact" class="lihui"></div>
-                  </div>
+        <div class="shell">
+            <a href="#" class="box"><i class="iconfont icon-account"></i><span>账号</span></a>
+            <a href="#" onclick="togglePopup('popup3', '背包')" class="box"><i class="iconfont icon-bag"></i><span>背包</span></a>
+            <a href="#" onclick="togglePopup('popup', '成就')" class="box"><i class="iconfont icon-achievements"></i><span>成就</span></a>
+            <a href="#" onclick="togglePopup('popup2', '回忆')" class="box"><i class="iconfont icon-memory"></i><span>回忆</span></a>
+            <a href="#" onclick="togglePopup('popup1', '属性')" class="box"><i class="iconfont icon-states"></i><span>属性</span></a>
+            <a href="../menu/archive.html" class="box"><i class="iconfont icon-file"></i><span>存档</span></a>
+            <a href="../aboutus/main.html" class="box"><i class="iconfont icon-aboutus"></i><span>关于我们</span></a>
+            <a href="../signin/login.html" class="box"><i class="iconfont icon-exit"></i><span>退出</span></a>
+        </div>
+            <div id="popup">
+                <h1>成就</h1>
+                    <div id=1 class="col" ontouchstart="this.classList.toggle('hover');">
+                        <div class="container">
+                            <div class="front" >
+                                <div class="inner">
+                                    <p id=p11>Locked</p>
+                                    <span>网瘾少年</span>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="inner">
+                                    <p id=p12 class="backstyle">结局成就1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id=2 class="col" ontouchstart="this.classList.toggle('hover');">
+                        <div class="container">
+                            <div class="front">
+                                <div class="inner">
+                                    <p id=p21>Locked</p>
+                                    <span>人生赢家</span>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="inner">
+                                    <p id=p22 class="backstyle">结局成就2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id=3 class="col" ontouchstart="this.classList.toggle('hover');">
+                        <div class="container">
+                            <div class="front">
+                                <div class="inner">
+                                    <p id=p31>Locked</p>
+                                    <span>你是个好人</span>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="inner">
+                                    <p id=p32 class="backstyle">结局成就3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id=4 class="col" ontouchstart="this.classList.toggle('hover');">
+                        <div class="container">
+                            <div class="front">
+                                <div class="inner">
+                                    <p id=p41>Locked</p>
+                                    <span>实力单身</span>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="inner">
+                                    <p id=p42 class="backstyle">结局成就4</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id=5 class="col" ontouchstart="this.classList.toggle('hover');">
+                        <div class="container">
+                            <div class="front">
+                                <div class="inner">
+                                    <p id=p51>Locked</p>
+                                    <span>镀金的勇者</span>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="inner">
+                                    <p id=p52 class="backstyle">游戏成就</p>
+                                    <p id=p52 class="backstyle">吃豆人游戏分数≥250</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id=6 class="col" ontouchstart="this.classList.toggle('hover');">
+                        <div class="container">
+                            <div class="front" style>
+                                <div class="inner">
+                                    <p id=p61>Locked</p>
+                                    <span>身手敏捷</span>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="inner">
+                                    <p id=p62 class="backstyle">游戏成就</p>
+                                    <p id=p62 class="backstyle">敏捷鼠标游戏分数≥35</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <a href="#" class="closebox" onclick="togglePopup('popup')">关闭</a>
+            </div>
+            <div id="popup2">
+                <h1>回忆</h1>
+                <div class="memory">
+                    <p>...</p>
+                    <br>
+                </div>
+                <a href="#" class="closebox" onclick="togglePopup('popup2')">关闭</a>
+            </div>
+            <div id="popup3">
+                <h1>背包</h1>
+                <div class="inventory">
+                    <div class="item">
+                        <div class="item-left">
+                            <img src="item1.jpg" alt="Item 1">
+                        </div>
+                        <div class="item-right">
+                            <p>物品名称 1</p>
+                            <p>物品说明 1</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-left">
+                            <img src="item2.jpg" alt="Item 2">
+                        </div>
+                        <div class="item-right">
+                            <p>物品名称 2</p>
+                            <p>物品说明 2</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-left">
+                            <img src="item3.jpg" alt="Item 3">
+                        </div>
+                        <div class="item-right">
+                            <p>物品名称 3</p>
+                            <p>物品说明 3</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-left">
+                            <img src="item4.jpg" alt="Item 4">
+                        </div>
+                        <div class="item-right">
+                            <p>物品名称 4</p>
+                            <p>物品说明 4</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-left">
+                            <img src="item5.jpg" alt="Item 5">
+                        </div>
+                        <div class="item-right">
+                            <p>物品名称 5</p>
+                            <p>物品说明 5</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-left">
+                            <img src="item6.jpg" alt="Item 6">
+                        </div>
+                        <div class="item-right">
+                            <p>物品名称 6</p>
+                            <p>物品说明 6</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="closebox" onclick="togglePopup('popup3')">关闭</a>
+            </div>   
+            
+            <div id="popup1">
+                <h1>人物信息</h1>
+                <div class="character-info">
+                    <div class="character-image">
+                        <img src="character.jpg" alt="人物立绘">
+                    </div>
+                    <div class="character-stats">
+                        <p><strong>生命：</strong> 100</p>
+                        <p><strong>攻击：</strong> 50</p>
+                        <p><strong>防御：</strong> 30</p>
+                        <p><strong>技能：</strong> </p>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <a href="#" class="closebox" onclick="togglePopup('popup1')">关闭</a>
+            </div>
+            <div id="blur",z-index = 1>
+                <div class="game-container" padding="30">
+                    <canvas class="game-canvas" width="800" height="500" ></canvas>
+                    <div id="role">
+                        <div id="hero" class="lihui"></div>
+                        <div id="Rebellion" class="lihui"></div>
+                        <div id="mum" class="lihui"></div>
+                        <div id="boss" class="lihui"></div>
+                        <div id="dad" class="lihui"></div>
+                        <div id="kp" class="lihui"></div>
+                        <div id="bianju" class="lihui"></div>
+                        <div id="interact" class="lihui"></div>
+                    </div>
+                </div>
+
+                <!-- <p class="title" >
+                    Rebellion
+                </p> -->
+                <p class="how-to-play">
+                    Use <span class="emp">Arrow</span> Keys to move. 
+                    <span class="emp">Space</span> to prompt/talk. 
+                    Press <span class="emp">ESC</span> to pause.
+                    通过 <span>WASD</span> 或 <span>上下左右</span>操控角色进行移动
+                </p>
             </div>
 
-            <!-- <p class="title" >
-                Rebellion
-            </p> -->
+            <div class="achievement" id="achievement">
+                <div class="popup-reminder">
+                    <p>新的成就！</p>
+                    <button id="close">关闭</button>
+                </div>
+            </div>
+            <svg>
+                <filter id="turbulence" filterUnits="objectBoundingBox" x="0" y="0" width="100%" height="100%">
+                <feTurbulence id="feturbulence" type="fractalNoise" numOctaves="3" seed="2"></feTurbulence>
+                <feDisplacementMap xChannelSelector="G" yChannelSelector="B" scale="20" in="SourceGraphic"></feDisplacementMap>
+                </filter>
+            </svg>
 
-            <p class="content">
-                通过 <span>WASD</span> 或 <span>上下左右</span>操控角色进行移动
-            </p>
-        </div>
-
-        <svg>
-            <filter id="turbulence" filterUnits="objectBoundingBox" x="0" y="0" width="100%" height="100%">
-              <feTurbulence id="feturbulence" type="fractalNoise" numOctaves="3" seed="2"></feTurbulence>
-              <feDisplacementMap xChannelSelector="G" yChannelSelector="B" scale="20" in="SourceGraphic"></feDisplacementMap>
-            </filter>
-        </svg>
-
-        <script src="./State/PlayerState.js"></script>
-        <script src="./js/TweenMax.min.js"></script>
-        <script src="./js/utils.js"></script>
-        <script src="./js//DirectionInput.js"></script>
-        <script src="./js/Overworld.js"></script>
-        <script src="./js/GameObject.js"></script>
-        <script src="./js/Person.js"></script>
-        <script src="./js/Sprite.js"></script>
-        <script src="./js/OverworldMap.js"></script>
-        <script src="./js/OverworldEvent.js"></script>
-        <script src="./js/TextMessage.js"></script>
-        <script src="./js/KeyPressListener.js"></script>
-        <script src="./js/RevealingText.js"></script>
-        <script src="./js/SceneTransition.js"></script>
-        <script src="./js/KeyboardMenu.js"></script>
-        <script src="./js/PauseMenu.js"></script>
-        <script src="./js/ChooseMenu.js"></script>
-        <script src="./progress/Progress.js"></script>
-        <script src="./js/TitleScreen.js"></script>
-        <script src="./js/init.js"></script>
+            <script src="./State/PlayerState.js"></script>
+            <script src="./js/TweenMax.min.js"></script>
+            <script src="./js/utils.js"></script>
+            <script src="./js/DirectionInput.js"></script>
+            <script src="./js/Overworld.js"></script>
+            <script src="./js/GameObject.js"></script>
+            <script src="./js/Person.js"></script>
+            <script src="./js/Sprite.js"></script>
+            <script src="./js/OverworldMap.js"></script>
+            <script src="./js/OverworldEvent.js"></script>
+            <script src="./js/TextMessage.js"></script>
+            <script src="./js/KeyPressListener.js"></script>
+            <script src="./js/RevealingText.js"></script>
+            <script src="./js/SceneTransition.js"></script>
+            <script src="./js/KeyboardMenu.js"></script>
+            <script src="./js/PauseMenu.js"></script>
+            <script src="./js/ChooseMenu.js"></script>
+            <script src="./progress/Progress.js"></script>
+            <script src="./js/TitleScreen.js"></script>
+            <script src="./js/init.js"></script>
     </body>
 </html>

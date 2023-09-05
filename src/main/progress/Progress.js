@@ -1,10 +1,11 @@
 class Progress {
   constructor(id = -1) {
     let currentUsername = localStorage["Sec-Sight-current-username"];
-    this.mapId = "Bedroom1";//birthplace, home
+    this.mapId = "Intro";//birthplace, home
     this.startingHeroX = 0;
     this.startingHeroY = 0;
     this.startingHeroDirection = "down";
+    this.SecondTerm = false;
     this.saveFileKey = "Second_Sight_SaveFile_" + currentUsername + "_" +id;
     this.getTime();
   }
