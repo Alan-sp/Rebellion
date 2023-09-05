@@ -10,6 +10,11 @@ body {
     height: 100vh;
     align-items: center;
 }
+h1{
+  position:relative;
+  left:6%;
+  top:2%;
+}
 .contain{
     position:relative;
     width:100%;
@@ -33,7 +38,8 @@ body {
     height:60%;
     padding:50px;
     box-shadow:0 5px 30px rgba(0,0,0,.30);
-    background:#fff;
+    background-image: url("../Rebellion/Rebellion/images/decorate2.jpg");
+    background-size:100% 100%;
     visibility:hidden;
     opacity:0;
     transition:0.5s;
@@ -56,13 +62,20 @@ body {
     visibility:hidden;
     opacity:0;
     transition:0.5s;
-    background-image: url("../Rebellion/Rebellion/images/decorate.jpg");
-    background-size:cover;
+    background-image: url("../Rebellion/Rebellion/images/decorate2.jpg");
+    background-size:100% 100%;
 }
 #popup2.active{
     visibility:visible;
     opacity:1;
     transition:0.5s;
+}
+#popup2 h2{
+  text-align:center;
+  font-family:黑体;
+}
+#popup3 h3{
+  margin:0;
 }
 #popup3{
   position:fixed;
@@ -77,8 +90,17 @@ body {
   visibility:hidden;
   opacity:0;
   transition:0.5s;
-  background-image: url("../Rebellion/Rebellion/images/decorate.jpg");
-  background-size:cover;
+  background-image: url("../Rebellion/Rebellion/images/decorate2.jpg");
+  background-size:100% 100%;
+}
+#popup2 p{
+  text-indent:2rem;
+  margin:1.5rem;
+}
+#popup2 h4{
+  margin:0.5rem 3rem;
+  text-align:right;
+  font-size:smaller;
 }
 #popup3.active{
   visibility:visible;
@@ -98,8 +120,8 @@ body {
   visibility:hidden;
   opacity:0;
   transition:0.5s;
-  background-image: url("../Rebellion/Rebellion/images/decorate.jpg");
-  background-size:cover;
+  background-image: url("../Rebellion/Rebellion/images/decorate2.jpg");
+  background-size:100% 100%;
 }
 #popup1.active{
   visibility:visible;
@@ -148,11 +170,11 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  margin: 25px;
+  margin: 0 10px;
 }
 
 .item {
-  width: 40%;
+  width: 45%;
   padding: 10px;
   border: 1px solid #ccc;
   margin-bottom: 10px;
@@ -164,7 +186,7 @@ body {
 
 .item-left img {
   max-width: 100px;
-  height: auto;
+  max-height:100px;
 }
 
 .item-right {

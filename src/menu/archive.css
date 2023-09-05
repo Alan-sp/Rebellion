@@ -5,7 +5,7 @@
 }
   
 body {
-    background-image:url("https://i1.hdslb.com/bfs/archive/80aa0ed5fb21e8710180c9892eb470472832d91a.jpg");
+    background-image:url("https://img2.baidu.com/it/u=2443202914,3245626179&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500");
     background-size: cover;
 }
   
@@ -32,14 +32,14 @@ p{
     top: 10%;
     bottom:10%;
     right: 10%;
-    grid-gap: 75px;
+    grid-gap: 50px;
     padding: 10px 10px 10px 10px;  
   }
   .bg {
-    background-image:url(../Rebellion/Rebellion/images/card.jpeg);
+    background-image:url(../Rebellion/Rebellion/images/castle.png);
     background-clip:padding-box;
     background-size: 100% 100%;
-    border-radius: 2rem;
+    border-radius: 1.5rem;
   }
   .container>div {/*选择container的直接子元素*/
     cursor: pointer;

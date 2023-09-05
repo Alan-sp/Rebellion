@@ -13,7 +13,7 @@
         
     </div>
     <div class="shell">
-        <a href="#" class="box"><i class="iconfont icon-account"></i><span>账号</span></a>
+        <a href="#" onclick="togglePopup('popup4', '账户')" class="box"><i class="iconfont icon-account"></i><span>账号</span></a>
         <a href="#" onclick="togglePopup('popup3', '背包')" class="box"><i class="iconfont icon-bag"></i><span>背包</span></a>
         <a href="#" onclick="togglePopup('popup', '成就')" class="box"><i class="iconfont icon-achievements"></i><span>成就</span></a>
         <a href="#" onclick="togglePopup('popup2', '回忆')" class="box"><i class="iconfont icon-memory"></i><span>回忆</span></a>
@@ -29,12 +29,12 @@
                     <div class="front" >
                         <div class="inner">
                             <p id=p11>Locked</p>
-                            <span>网瘾少年</span>
+                            <span>善良的代价</span>
                         </div>
                     </div>
                     <div class="back">
                         <div class="inner">
-                            <p id=p12 class="backstyle">结局成就1</p>
+                            <p id=p12 class="backstyle">被“少女”杀死</p>
                         </div>
                     </div>
                 </div>
@@ -44,12 +44,12 @@
                     <div class="front">
                         <div class="inner">
                             <p id=p21>Locked</p>
-                            <span>人生赢家</span>
+                            <span>残暴的欢愉</span>
                         </div>
                     </div>
                     <div class="back">
                         <div class="inner">
-                            <p id=p22 class="backstyle">结局成就2</p>
+                            <p id=p22 class="backstyle">被“矮匠”杀死</p>
                         </div>
                     </div>
                 </div>
@@ -59,12 +59,12 @@
                     <div class="front">
                         <div class="inner">
                             <p id=p31>Locked</p>
-                            <span>你是个好人</span>
+                            <span>还没开始...就结束了</span>
                         </div>
                     </div>
                     <div class="back">
                         <div class="inner">
-                            <p id=p32 class="backstyle">结局成就3</p>
+                            <p id=p32 class="backstyle">两次解谜失败</p>
                         </div>
                     </div>
                 </div>
@@ -74,12 +74,12 @@
                     <div class="front">
                         <div class="inner">
                             <p id=p41>Locked</p>
-                            <span>实力单身</span>
+                            <span>让世界...遗忘我</span>
                         </div>
                     </div>
                     <div class="back">
                         <div class="inner">
-                            <p id=p42 class="backstyle">结局成就4</p>
+                            <p id=p42 class="backstyle">拒绝相信自己的真实身份</p>
                         </div>
                     </div>
                 </div>
@@ -89,13 +89,12 @@
                     <div class="front">
                         <div class="inner">
                             <p id=p51>Locked</p>
-                            <span>镀金的勇者</span>
+                            <span>天空...是虚假的</span>
                         </div>
                     </div>
                     <div class="back">
                         <div class="inner">
-                            <p id=p52 class="backstyle">游戏成就</p>
-                            <p id=p52 class="backstyle">吃豆人游戏分数≥250</p>
+                            <p id=p52 class="backstyle">得知自己身世的真相</p>
                         </div>
                     </div>
                 </div>
@@ -105,13 +104,12 @@
                     <div class="front" style>
                         <div class="inner">
                             <p id=p61>Locked</p>
-                            <span>身手敏捷</span>
+                            <span>是结束...还是开始？</span>
                         </div>
                     </div>
                     <div class="back">
                         <div class="inner">
-                            <p id=p62 class="backstyle">游戏成就</p>
-                            <p id=p62 class="backstyle">敏捷鼠标游戏分数≥35</p>
+                            <p id=p62 class="backstyle">完成二周目的结局</p>
                         </div>
                     </div>
                 </div>
@@ -121,8 +119,20 @@
     <div id="popup2">
         <h1>回忆</h1>
         <div class="memory">
-            <p>...</p>
-            <br>
+            <h2>王室讨伐令</h2>
+            <h3>谨此向勇士雷比利安及全体臣民宣告：</p>
+                
+            <p>鉴于魔王科西切的恶行在我王国肆虐不止，为了维护正义、保护国家和子民的安全，我于教会特此授予勇士雷比利安重任，前往勇敢地迎战魔王科西切。
+                
+                勇士雷比利安因英勇无畏、智勇双全而备受赞誉。我们深信，他将以坚定的意志、高尚的品德和无比的勇气，承担起这一重要使命。
+                
+                愿雷比利安在追求正义的征途中，得到天神的保佑和国王的祝福。他的英勇之举，将铸就王国的辉煌未来。
+                
+                敬请全体臣民为雷比利安的勇敢行动喝彩，为王国的和平安宁祈祷。愿雷比利安旗开得胜，将魔王科西切驱逐出这篇应许之地。</p>
+                
+            <h4>陛下亲笔签署于 [日期]</h4>
+            <h4>于 [王宫所在地] 颁布</h4>        
+            <h4>【陛下的签名】</h4>
         </div>
         <a href="#" class="closebox" onclick="togglePopup('popup2')">关闭</a>
     </div>
@@ -131,38 +141,38 @@
         <div class="inventory">
             <div class="item">
                 <div class="item-left">
-                    <img src="item1.jpg" alt="Item 1">
+                    <img src="../Rebellion/Rebellion/images/key.jpeg" alt="Item 1">
                 </div>
                 <div class="item-right">
-                    <p>物品名称 1</p>
-                    <p>物品说明 1</p>
+                    <p>一把锈蚀的钥匙</p>
+                    <p>从神秘的少女身上找到的，似乎是通往隐藏房间的钥匙</p>
                 </div>
             </div>
             <div class="item">
                 <div class="item-left">
-                    <img src="item2.jpg" alt="Item 2">
+                    <img src="../Rebellion/Rebellion/images/shield.jpeg" alt="Item 2">
                 </div>
                 <div class="item-right">
-                    <p>物品名称 2</p>
-                    <p>物品说明 2</p>
+                    <p>一枚坚实的盾牌</p>
+                    <p>由矮人赠予，制作者精湛的手艺使它坚不可摧</p>
                 </div>
             </div>
             <div class="item">
                 <div class="item-left">
-                    <img src="item3.jpg" alt="Item 3">
+                    <img src="../Rebellion/Rebellion/images/key.jpg" alt="Item 3">
                 </div>
                 <div class="item-right">
-                    <p>物品名称 3</p>
-                    <p>物品说明 3</p>
+                    <p>一枚精巧的钥匙</p>
+                    <p>由矮人赠予，可以打开武器库的大门，是对你高尚品德的赞赏</p>
                 </div>
             </div>
             <div class="item">
                 <div class="item-left">
-                    <img src="item4.jpg" alt="Item 4">
+                    <img src="../Rebellion/Rebellion/images/paper.jpeg" alt="Item 4">
                 </div>
                 <div class="item-right">
-                    <p>物品名称 4</p>
-                    <p>物品说明 4</p>
+                    <p>一份详细的情报</p>
+                    <p>潜伏在教会的间谍带来的情报，你冒着生命危险从术士手中夺来</p>
                 </div>
             </div>
             <div class="item">
@@ -176,11 +186,11 @@
             </div>
             <div class="item">
                 <div class="item-left">
-                    <img src="item6.jpg" alt="Item 6">
+                    <img src="../Rebellion/Rebellion/images/clock.png" alt="Item 6">
                 </div>
                 <div class="item-right">
-                    <p>物品名称 6</p>
-                    <p>物品说明 6</p>
+                    <p>一块古老的怀表</p>
+                    <p>你也不记得为什么它会在自己手中，你努力回想，却穿不透记忆的迷雾</p>
                 </div>
             </div>
         </div>
