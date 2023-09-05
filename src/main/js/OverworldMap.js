@@ -347,7 +347,6 @@ window.OverworldMaps = {
             events: [
               { who: "interact", type: "textMessage", text: "你看着这架古老而诡异的钢琴，心中渐生疑窦。" },
               { who: "hero", type: "textMessage", text: "这究竟是怎么回事。" },
-              { type: "addStoryFlag", flag: "end?" },
             ]
           }
         ],
@@ -379,7 +378,20 @@ window.OverworldMaps = {
           {
             events: [
               {who: "interact", type: "textMessage", text: "桌子上摆着许多残羹剩饭，但不难看出佳肴的美味" },
-              // { required:"doorkey",type: "addStoryFlag", flag: "door_opened" },
+            ]
+          }
+        ],
+      },
+      window:
+      {
+        type:"Person",
+        x: utils.withGrid(15),
+        y: utils.withGrid(1),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              {who: "interact", type: "textMessage", text: "一扇彩色拼接玻璃窗，魔王倒还有些艺术品味" },
             ]
           }
         ],
@@ -393,8 +405,21 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
-              {who: "interact", type: "textMessage", text: "墙上摆着许许多多的名画" },
-              // { required:"doorkey",type: "addStoryFlag", flag: "door_opened" },
+              {who: "interact", type: "textMessage", text: "墙上挂着一副油画，不知为何你竟有些眼熟" },
+            ]
+          }
+        ],
+      },
+      stairs:
+      {
+        type:"Person",
+        x: utils.withGrid(11),
+        y: utils.withGrid(13),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              {who: "interact", type: "textMessage", text: "不知通往何处的阶梯，但显然现在还不是前往的时候" },
             ]
           }
         ],
@@ -553,6 +578,62 @@ window.OverworldMaps = {
         x: utils.withGrid(3),
         y: utils.withGrid(5),
         useShadow: true,
+      },
+      vase:{
+        type:"Person",
+        x: utils.withGrid(3),
+        y: utils.withGrid(2),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "一个破碎的罐子，或许是被人在惊慌中打破的" },
+            ]
+          }
+        ],
+      },
+      vase:{
+        type:"Person",
+        x: utils.withGrid(7),
+        y: utils.withGrid(4),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "一团断了的锁链，想必这就是你方才听到的动静" },
+              { who: "interact", type: "textMessage", text: "什么人？你心中警铃大作" },
+            ]
+          }
+        ],
+      },
+      bookshelf:{
+        type:"Person",
+        x: utils.withGrid(2),
+        y: utils.withGrid(2),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "一个摆满了书的书架，谁知道会不会暗藏玄机，但谨慎起见还是不要随意翻动" },
+            ]
+          }
+        ],
+      },
+      closet:{
+        type:"Person",
+        x: utils.withGrid(0),
+        y: utils.withGrid(5),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "雕刻着复古花纹的衣柜，大小足够藏匿一个人" },
+              { who: "interact", type: "textMessage", text: "刚才的声音会不会就是从这里面发出来的？" },
+              { who: "interact", type: "textMessage", text: "你犹豫片刻还是拉开了门。" },
+              { who: "interact", type: "textMessage", text: "一只蝙蝠扑棱棱飞了出来。没有人。" },
+            ]
+          }
+        ],
       },
     },
     cutsceneSpaces: {
@@ -805,19 +886,6 @@ window.OverworldMaps = {
           ]
         }
       ],
-      [utils.asGridCoord(6, 2)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "hall",
-              x: utils.withGrid(2),
-              y: utils.withGrid(8),
-              direction: "up"
-            }
-          ]
-        }
-      ],
       [utils.asGridCoord(6, 12)]: [
         {
           disqualify:["Seen_intro2"],
@@ -909,10 +977,10 @@ window.OverworldMaps = {
       return walls;
     }(),
   },
-  hall: {
-    id: "hall",
-    lowerSrc: "./images/maps/hall.png",
-    upperSrc: "",
+  bedroom2: {
+    id: "bedroom2",
+    lowerSrc: "./images/maps/bedroom2-lower.png",
+    upperSrc: "./images/maps/bedroom2-upper.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -921,68 +989,271 @@ window.OverworldMaps = {
         y: utils.withGrid(5),
         useShadow: true,
       },
-      door:{
+      close_alarm: {
         type: "Person",
-        x: utils.withGrid(11),
-        y: utils.withGrid(1),
+        x: utils.withGrid(5),
+        y: utils.withGrid(2),
         src: "./images/characters/empty.png",
         talking: [
           {
             events: [
-              { disqualify:"Ashram_key",who: "interact", type: "textMessage", text: "与第一层一样，通往下一层的大门依旧紧锁着，看来只有找到这层的钥匙才能继续。" },
-              { required:"Ashram_key",who: "interact", type: "textMessage", text: "你熟练地将钥匙插入锁孔，下一秒相似的石盘从门上浮现，但石刻上的谜语，已有些许不同。" },
-              { required:"Ashram_key",type: "addStoryFlag", flag: "door2_opened" },
+              { type: "textMessage", text: "你解除了地下室的警报。" },
+              { type: "addStoryFlag", flag: "close-alarm" },
             ]
           }
         ],
-      }
+      },
+      bed1: {
+        type: "Person",
+        x: utils.withGrid(4),
+        y: utils.withGrid(3),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "说了不要这么懒，见到床就想躺！床上是不会有警报器的！" },
+            ]
+          }
+        ],
+      },
+      bed2: {
+        type: "Person",
+        x: utils.withGrid(3),
+        y: utils.withGrid(3),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "说了不要这么懒，见到床就想躺！床上是不会有警报器的！" },
+            ]
+          }
+        ],
+      },
+      plant: {
+        type: "Person",
+        x: utils.withGrid(5),
+        y: utils.withGrid(7),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "这也是一株没用的绿植。如果你要找报警器的话，想想也知道，报警器要连着电，肯定应该在靠着墙的地方。" },
+              { who:'hero', type: "textMessage", text: "【克莱尔】：虽然很离奇，但是我真的觉得这一株植物和客厅里钢琴旁边那一株长得一模一样。" },
+            ]
+          }
+        ],
+      },
+      wardrobe1: {
+        type: "Person",
+        x: utils.withGrid(1),
+        y: utils.withGrid(3),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who:'hero', type: "textMessage", text: "【克莱尔】：这是哈里森夫人的衣柜。" },
+            ]
+          }
+        ],
+      },
+      wardrobe2: {
+        type: "Person",
+        x: utils.withGrid(1),
+        y: utils.withGrid(4),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who:'hero', type: "textMessage", text: "【克莱尔】：这是哈里森先生的衣柜。" },
+            ]
+          }
+        ],
+      },
+      wardrobe3: {
+        type: "Person",
+        x: utils.withGrid(1),
+        y: utils.withGrid(5),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who:'hero', type: "textMessage", text: "【克莱尔】：这是哈里森先生的衣柜。" },
+            ]
+          }
+        ],
+      },
+      bookshelf1: {
+        type: "Person",
+        x: utils.withGrid(1),
+        y: utils.withGrid(6),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "一个摆满了书的书架。仔细看了看书名，你感觉知识的气息扑面而来。除此之外，没有什么值得注意的了。" },
+              { who:'hero', type: "textMessage", text: "【克莱尔】：好......好高深。" },
+            ]
+          }
+        ],
+      },
+      bookshelf2: {
+        type: "Person",
+        x: utils.withGrid(1),
+        y: utils.withGrid(7),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "一个摆满了书的书架。仔细看了看书名，你感觉知识的气息扑面而来。除此之外，没有什么值得注意的了。" },
+              { who:'hero', type: "textMessage", text: "【克莱尔】：好......好艰涩。" },
+            ]
+          }
+        ],
+      },
+      window1: {
+        type: "Person",
+        x: utils.withGrid(2),
+        y: utils.withGrid(2),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "窗外是优美的风景。令人愉悦，但没什么特别的。" },
+              { who: "interact", type: "textMessage", text: "（不过如果你是在找报警器的话...相信我，玩到这里还在打窗户主意的绝对不多！）" },
+            ]
+          }
+        ],
+      },
+      window2: {
+        type: "Person",
+        x: utils.withGrid(10),
+        y: utils.withGrid(2),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "窗外是优美的风景。令人愉悦，但没什么特别的。" },
+              { who: "interact", type: "textMessage", text: "（不过如果你是在找报警器的话...相信我，玩到这里还在打窗户主意的绝对不多！）" },
+            ]
+          }
+        ],
+      },
+      book: {
+        type: "Person",
+        x: utils.withGrid(4),
+        y: utils.withGrid(8),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "一本通讯录。里面记载了大量的电话和地址，但是好像和报警器没什么关系。" },
+            ]
+          }
+        ],
+      },
+      photo1: {
+        type: "Person",
+        x: utils.withGrid(6),
+        y: utils.withGrid(2),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "又是一张写着“瑞雯，我们永远爱你”的相片，难道说他们是瑞雯的父母？我真的只是一个生化人？不不不，我一定要找到真相！" },
+            ]
+          }
+        ],
+      },
+      photo: {
+        type: "Person",
+        x: utils.withGrid(11),
+        y: utils.withGrid(2),
+        src: "./images/maps/bathroom-upper.png",
+        talking: [
+          {
+            events: [
+              { type: "textMessage", text: "好吧，这是一个彩蛋，你真的这么细节吗？？？！！我说我说：报警器在床头柜。我想想还有什么能告诉你，好吧，告诉你写下这些物品互动是lyh嘿嘿（当然不全是，zwy暗戳戳地补充道）" },
+            ]
+          }
+        ],
+      },
+      computer: {
+        type: "Person",
+        x: utils.withGrid(9),
+        y: utils.withGrid(3),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "hero", type: "textMessage", text: "【克莱尔】：这是我父母的声音，原来我听到的是……假的……还有这些画面，都是爸爸妈妈的记忆。为什么会有这些…?他们到底想要什么！？(呜咽)" },
+              { who: "dad", type: "textMessage", text: "【2××6年7月21日】那大概是我生命中最痛苦的一天了。我看着她躺在雨里一动不动，跪在原地愣了好久，妻子已经哭得几乎断气，我攥起她的手一遍遍地喊她的名字，脑子像被撕裂了一样疼的要命…… ……" },
+              { who: "dad", type: "textMessage", text: "我怒斥自己作为一个父亲的无能，连最爱的人都保护不了，让她在痛苦中离去，甚至没有听到爸爸妈妈的一句安慰……为什么我就不能辞掉那该死的工作专心陪她？为什么我们直到她抑郁到绝望都没有发现？为什么……" },
+              { who: "dad", type: "textMessage", text: "【2××7年9月15日】女儿，从你离开我们到现在已经一年多了，我和妈妈没有一天，一分一秒不在想你，我曾一度想随你而去，到那边好好的陪着你，但我没脸再见你，没有资格就这么让自己解脱，留下你妈妈和爷爷奶奶，让他们承担痛苦的惩罚。" },
+              { who: "dad", type: "textMessage", text: "今天是你的生日，我很抱歉没能陪着你，愿你在天堂快乐……" },
+              { who: "dad", type: "textMessage", text: "【2××7年10月29日】今天克莱尔的表现很好，学会了在客厅里摸索着走动。也不知道是因为我们的影响还是这孩子本身的性格，不，应该说是程序，她在这件事面前总是表现地很坚强，乐观，我看到了在瑞雯身上不曾有过的东西……" },
+              { who: "dad", type: "textMessage", text: "目前为止我们对她的到来还是心存一丝感激，但接下来要怎么相处，会发生什么，谁也说不准……" },
+              //    {type: "embedPage", container: document.querySelector(".game-container"), toEmbed: "../mini-game/number-puzzle/index.html"},//同样是相对game.html的路径
+              //    { who: "hero", type: "textMessage", text: "拼图游戏不适合我" },//蓝色血液
+            ]
+          },
+        ],
+      },
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(11, 13)]: [
+      [utils.asGridCoord(12, 5)]: [
         {
           events: [
             {
               type: "changeMap",
-              map: "Bedroom1",
-              x: utils.withGrid(2),
-              y: utils.withGrid(8),
-              direction: "up"
+              map: "livingroom",
+              x: utils.withGrid(1),
+              y: utils.withGrid(5),
+              direction: "right"
             }
           ]
         }
       ],
-      [utils.asGridCoord(21, 3)]: [
+      [utils.asGridCoord(10, 5)]: [
         {
           events: [
-            {
-              type: "changeMap",
-              map: "cell",
-              x: utils.withGrid(2),
-              y: utils.withGrid(8),
-              direction: "up"
-            }
+            { type: "addStoryFlag", flag:"not-touch" },
           ]
         }
       ],
-      [utils.asGridCoord(11, 2)]: [
+      [utils.asGridCoord(11, 5)]: [
         {
-          required:["door2_opened"],
+          required:["not-touch"],
+          disqualify: ["SEEN_INTRO11","close-alarm"],
           events: [
-            {
-              type: "changeMap",
-              map: "Ashram",
-              x: utils.withGrid(2),
-              y: utils.withGrid(8),
-              direction: "up"
-            }
+            { type: "addStoryFlag", flag: "SEEN_INTRO11" },
+            { type: "textMessage", text: "你隐隐觉得床边的桌子上东西摆放很奇怪，也许你会想去看看。" },
           ]
-        }
+        },
+        {
+          disqualify: ["SEEN_INTRO4"],
+          events: [
+            { type: "addStoryFlag", flag: "SEEN_INTRO4" },
+            { who: "dad", type: "textMessage", text: "【哈里森先生】：克莱尔？有什么事吗？" },
+            { who: "hero", type: "textMessage", text: "【克莱尔】：我...我只是想到处走走。睡了好久了，想活动一下。" },
+            { who: "mum", type: "textMessage", text: "【哈里森夫人】：那宝贝儿，你自己小心一些。" },
+            { who: "hero", type: "textMessage", text: "哈里森夫妇离开了。" },
+            //    {type: "embedPage", container: document.querySelector(".game-container"), toEmbed: "./mini-game/number-puzzle/index.html"},//同样是相对game.html的路径
+            //    { who: "hero", type: "textMessage", text: "拼图游戏不适合我" },//蓝色血液
+          ]
+        },
       ],
     },
     walls: function () {
       let walls = {};
       [
-        
+        "1,2", "2,2", "3,2", "4,2", "5,2", "6,2", "7,2", "8,2", "9,2", "10,2", "11,2",
+        "11,3", "9,3", "8,3", "4,3", "3,3", "1,3",
+        "1,4", "11,4", "12,4", "13,4",
+        "13,5", "1,5",
+        "1,6", "6,6", "7,6", "8,6", "9,6", "10,6", "11,6", "12,6",
+        "1,7", "5,7", "6,7",
+        "0,8", "2,8", "3,8", "4,8", "5,8", "6,8",
+        "1,9",
       ].forEach(coord => {
         let [x, y] = coord.split(",");
         walls[utils.asGridCoord(x, y)] = true;
@@ -1282,10 +1553,10 @@ window.OverworldMaps = {
       return walls;
     }(),
   },
-  cell: {
-    id: "cell",
-    lowerSrc: "./images/maps/cell.png",
-    upperSrc: "",
+  study: {
+    id: "study",
+    lowerSrc: "./images/maps/study-lower.png",
+    upperSrc: "./images/maps/study-upper.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1294,88 +1565,76 @@ window.OverworldMaps = {
         y: utils.withGrid(5),
         useShadow: true,
       },
-      dwarf: {
+      key_to_basement: {
         type: "Person",
-        x: utils.withGrid(3),
-        y: utils.withGrid(10),
-        useShadow: true,
+        x: utils.withGrid(1),
+        y: utils.withGrid(7),
         src: "./images/characters/empty.png",
         talking: [
           {
             events: [
-              { who: "interact", type: "textMessage", text: "房间的角落的牢笼中端坐着一个神秘的人影，你握紧手上的利刃，慢慢靠近，却不曾想到对方先开了口。" },
-              { who: "interact", type: "textMessage", text: "神秘的人影：人类？我可没听说摩拉克斯有囚禁人类工匠。" },
-              { who: "interact", type: "textMessage", text: "独特的口音加上房间的布局，让你立马分辨出对方的身份——这是给被强征的矮人工匠，考虑到帝国与矮人国的友好关系，你斩断了铁锁，推开牢门。" },
-              { who: "hero", type: "textMessage", text: "雷比利恩：帝国派我来此执行任务，我正在这里收集线索，请将你知道的，有关摩拉克斯的一切告诉我，我会带你离开这里。 " },
-              { who: "interact", type: "textMessage", text: "矮人:谢谢你的善举，年轻人，只可惜摩拉克斯远比他展现的更谨慎，我在这里几个月所接触的，不过只有武器的锻造工作而已，没法向你提供有利的情报。" },
-              { who: "hero", type: "textMessage", text: "雷比利恩:我理解你的苦衷，现在矮人国和人类已经达成了对魔族的统一战线，我们可以一起结束这场战争（伸出手）" },
-              { who: "hero", type: "textMessage", text: "矮人:只是你的战争，孩子，我没有兴趣与你一同砍下陌生人的头颅，为他人铸剑非我所愿，现在我已恢复自由，何去何从是我决定" },
-              { who: "hero", type: "textMessage", text: "旁白:说罢，矮人从床上起身，默默走向柜子从中翻找着什么，片刻后端出一筐铁器" },
-              { who: "hero", type: "textMessage", text: "矮人:事到如今，我的这些作品也不该再成为刽子手的帮凶了，但这块盾牌你就拿去吧，我相信你会用它去守护而非屠戮，谢谢你让我能让我做出自己的选择。" },
-              { who: "interact", type: "textMessage", text: "矮人一边等待着你的回答，一边将木筐拖向熔炉。你本只在意摩拉克斯的情报，无意向矮人索要报酬，但显然凝聚矮人精华的刀枪剑戟胜过你手中平平无奇的破铜烂铁，比起那副盾牌也更具诱惑力，可矮人国名义上还是帝国的盟友，为了完成国王的愿望，你该…….." },
-              {
-                type: "choose",
-                choices: [
-                  {
-                    label: "武力胁迫，据为己有",
-                    description: "",
-                    // storyflag: "Girl_Talked",
-                    events:[
-                        { type:"textMessage",text:"旁白：虽然矮人的盾牌足以助你一臂之力，但为了保证任务的万无一失，你还需要更多助力，为此你不惜以武力相威胁。"},
-                        { who:"hero",type:"textMessage",text:"雷比利恩：（将剑指向矮人）很可惜，只有沾血的利刃才能换来永久的和平，请你留下这批武器，我会用它们结束这一切，我保证。"},
-                        { who:"hero",type:"textMessage",text:"矮人：（失望的眼神）以战争获得的和平只能以战争维护，执迷于暴力的你，只会带来更多的鲜血，真正的和平不需要你这样的人 "},
-                        { type:"textMessage",text:"矮人从杂乱的铁器中抽出一把长柄铁锤，精致的锻工让你为之沉沦，而它的主人早已摆好架势，身经百战的你马上意识到了问题的严重性，此人绝不简单。"},
-                        { type:"textMessage",text:"……………….."},
-                        { who:"hero",type:"矮人：只有这种程度吗？"},
-                        { type:"textMessage",text:"看似笨重的铁锤稳稳接下你的攻击，紧接着又快速击碎你的关节，短短几个回合你便瘫倒在地，再无翻身可能。"},
-                        { who:"hero",type:"雷比利恩：救….救我……"},
-                        { who:"hero",type:"矮人再一次挥锤，而你已无力躲闪，一个可笑的念头在你脑中闪过………….”要是有块盾牌就好了”"},
-                        { type: "gameOver", path: "./gameover/over3.html" }
-                    ]
-  
-                  },
-                  {
-                    label: "欣然笑纳，鸣金启航",
-                    description: "",
-                    storyflag: "",
-                    events:[
-                      { who:"hero",type:"textMessage",text:"雷比利恩:真是精湛的工艺啊，我会珍重使用，带着它终结这场战争。"},
-                      { type:"textMessage",text:"坚实的盾牌让你信心倍增，肩上的重量也提醒着你的重任，有太多无关的人被牵扯了，这场战争该结束了"},
-                      { type:"addStoryFlag",flag:"shield"},
-                    ]
-                  },
-                  {
-                    label: "但为正义，不图回报",
-                    description: "",
-                    storyflag: "",
-                    events:[
-                      { who:"hero",type:"textMessage",text:"雷比利恩：我无意向您索要报酬，我只想早日结束这场战争，不该再有人牵扯进去了，成为刽子手的只有我这样的人就够了"},
-                      { type:"textMessage",text:"你转过身去头也不回的走向门口，却被身后的矮人叫住"},
-                      { who:"hero",type:"textMessage",text:"矮人：没想到语气冰冷的你，竟会做出回答。"},
-                      { who:"hero",type:"textMessage",text:"矮人：不过（上下打量着）可能正是你这样的人才能做出不同的选择吧，（伸手）这是武器库的钥匙，里面的武器虽远远不如我的做工，但哪里兴许还有你需要的信息。"},
-                      { type:"addStoryFlag",flag:"Arsenal_Key"},
-                      { who:"hero",type:"textMessage",text:"雷比利恩：谢谢，（坚定的语气）我会结束这场战争的。"},
-                      { who:"hero",type:"interact",text:"带着钥匙与决心，你再一次转身"},
-                    ]
-                  },
-                ],
-              },
+              { type: "textMessage", text: "你找到了通往地下室的钥匙。" },
+              { type: "textMessage", text: "如果你想去地下室，还需要解除地下室警报，去哈里森夫妇的卧室看看吧。如果你还想再搜索一下这个房间，有惊喜等着你哦。" },
+              { type: "addStoryFlag", flag: "key-to-basement" },
             ]
           }
         ],
       },
-      channel: {
+      tabel1: {
         type: "Person",
-        x: utils.withGrid(8),
-        y: utils.withGrid(2),
-        useShadow: true,
+        x: utils.withGrid(3),
+        y: utils.withGrid(3),
         src: "./images/characters/empty.png",
         talking: [
           {
             events: [
-              { disqualify:"Ashram_key",who: "interact", type: "textMessage", text: "在这个肮脏的水槽下，好像有什么在闪闪发光。" },
-              { disqualify:"Ashram_key",who: "hero", type: "textMessage", text: "这……一把钥匙？" },
-              { type: "addStoryFlag",flag: "Ashram_key"},
+              { who: "interact", type: "textMessage", text: "桌子上摆着哈里森先生的工作文稿。似乎是有关互联网应用开发的内容，如果你的web开发技术再好一点或许能看得懂，虽然这并不能帮你找到钥匙在哪里。" },
+            ]
+          }
+        ],
+      },
+      tabel2: {
+        type: "Person",
+        x: utils.withGrid(2),
+        y: utils.withGrid(3),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "几本厚厚的工作个人日志。每一本的扉页上都有“光宗耀组”几个字，图文并茂，看得出工作内容十分之充实。" },
+              { who:'hero', type: "textMessage", text: "【克莱尔】：......虽然不知道“光宗耀组”是什么，不过工作还真是辛苦呢......" },
+            ]
+          }
+        ],
+      },
+      nothing2: {
+        type: "Person",
+        x: utils.withGrid(6),
+        y: utils.withGrid(2),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "上面摆着的相框里是一家人幸福的合影，可里面并不是你和你的爸爸妈妈，而是你见到的这对装成你父母的男女和一个和你差不多大的女孩。照片的一角写着：瑞雯，我们永远爱你！" },
+              { who:'hero', type: "textMessage", text: "【克莱尔】：瑞雯？瑞雯是谁？看起来是这个女孩的名字。" },
+              { type: "textMessage", text: "或许这正和你想找的真相有关。" },
+            ]
+          }
+        ],
+      },
+      document: {
+        type: "Person",
+        x: utils.withGrid(7),
+        y: utils.withGrid(6),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "你找到了一份档案袋" },
+              { type: "addStoryFlag", flag:"document-get" },
+              { type: "textMessage", text: "达成成就：敏锐的搜查者" },
+              { who: "interact", type: "textMessage", text: "【2××7年10月4日】××公路特大交通事故仍在持续调查，遇难者中前哈里森集团科研人员丹尼尔.布兰德一家仍处于失踪状态。警方建议哈里森集团启用全域DNA追踪，但集团董事路易斯.哈里森有意回避此事，称因技术问题两个月内无法启动该追踪系统……" },
+              { who: "interact", type: "textMessage", text: "【2××5年6月17日】亨特一家机器人非法收养一案开庭审理，最终生化人保罗.亨特被强制格式化程序。外界舆论对此反应强烈，多名参议员向国会递交机器人户籍合法化的提案，但支持率仍旧低迷。这是自十三年前机器人入世以来在此问题上影响最大的一起案件……" },
             ]
           }
         ],
@@ -1383,23 +1642,63 @@ window.OverworldMaps = {
     },
 
     cutsceneSpaces: {
-      [utils.asGridCoord(1, 6)]: [
+      [utils.asGridCoord(0, 9)]: [
         {
           events: [
             {
               type: "changeMap",
-              map: "hall",
-              x: utils.withGrid(2),
-              y: utils.withGrid(8),
-              direction: "up"
+              map: "livingroom",
+              x: utils.withGrid(13),
+              y: utils.withGrid(5),
+              direction: "left"
             }
+          ]
+        }
+      ],
+      [utils.asGridCoord(1, 9)]: [
+        {
+          disqualify:["inform9","key-to-basement"],
+          required:["not-found"],
+          events: [
+            { type: "textMessage", text: "旁边的绿植似乎被翻新过？" },
+            { type: "addStoryFlag", flag:"inform9" },
+          ]
+        }
+      ],
+      [utils.asGridCoord(3, 6)]: [
+        {
+          events: [
+            { type: "addStoryFlag", flag:"not-found" },
+          ]
+        }
+      ],
+      [utils.asGridCoord(2, 6)]: [
+        {
+          events: [
+            { type: "addStoryFlag", flag:"not-found" },
+          ]
+        }
+      ],
+      [utils.asGridCoord(4, 6)]: [
+        {
+          events: [
+            { type: "addStoryFlag", flag:"not-found" },
           ]
         }
       ],
     },
     walls: function () {
       let walls = {};
-      [
+      ["0,8", "-1,9", "0,10", "1,10", "2,10", "3,10", "4,10", "5,10", "6,10", "7,10", "8,10", "9,10",
+        "9,9", "8,9",
+        "8,8",
+        "8,7", "1,7","2,7","4,7",
+        "1,6", "2,6","4,6","5,6", "6,6", "7,6", "8,6",
+        "9,5", "1,5",
+        "1,4", "8,4", "9,4",
+        "8,3", "7,3", "1,3", "2,3", "3,3", "4,3",
+        "1,2", "2,2", "3,2", "4,2", "5,2", "6,2", "7,2", "8,2",
+        "1,1", "2,1", "3,1", "4,1", "5,1", "6,1", "7,1", "8,1",
       ].forEach(coord => {
         let [x, y] = coord.split(",");
         walls[utils.asGridCoord(x, y)] = true;
@@ -1407,120 +1706,221 @@ window.OverworldMaps = {
       return walls;
     }(),
   },
-  Ashram: {
-    id: "Ashram",
-    lowerSrc: "./images/maps/Ashram.png",
-    upperSrc: "",
+  garden: {
+    id: "garden",
+    lowerSrc: "./images/maps/garden-lower.png",
+    upperSrc: "./images/maps/garden-upper.png",
     configObjects: {
       hero: {
         type: "Person",
         isPlayerControlled: true,
-        x: utils.withGrid(6),
-        y: utils.withGrid(13),
+        x: utils.withGrid(5),
+        y: utils.withGrid(3),
         useShadow: true,
+      },
+      enginere: {
+        type: "Person",
+        x: utils.withGrid(10),
+        y: utils.withGrid(6),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            disqualify: ["inform8"],
+            events: [
+              { type: "addStoryFlag", flag:"inform8" },
+              { who: "kp", type: "textMessage", text: "【威尔】：克莱尔...（叹息）...克莱尔.布兰德，我知道你会来，我等你很久了。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：可你明白，既然你到了这，就没有回头路了。" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：威尔叔叔，这一切究竟是怎么回事？我只想知道真相......" },
+              { who: "kp", type: "textMessage", text: "【威尔】：真相...向来都不是让人开心的东西。" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：我不在乎它有多残酷，我只怕埋葬我父母的时候哭的不明不白。" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：威尔叔叔，请你告诉我，哈里森夫妇到底是谁？为什么要装作我的爸爸妈妈？我的眼睛又是怎么回事？" },
+              { who: "kp", type: "textMessage", text: "【威尔】：好吧..." },
+              { who: "kp", type: "textMessage", text: "【威尔】：我想你已经知道了，你不是人类。在机器人入世之前，你是我设计的拥有成熟智慧系统的生化人之一，但因为视觉代码极不稳定，被机械生命研究协会抛弃了。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：我想，本来你作为生化人的、浑浑沌沌的一生应该会到此为止，惨淡落幕。但也许是命运眷顾你，孩子，事情又有了转机。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：布兰德夫妇发现了你，并且决定收养你。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：你的爸爸妈妈...他们很爱你，他们完完全全把你当作人类来抚养，因此你拥有几乎和正常人类一般无二的情感。" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：爸爸...妈妈......" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：...所以爸爸妈妈是怎么...是那场事故？" },
+              { who: "kp", type: "textMessage", text: "【威尔】：是的。很遗憾，你的父母在三个月前的那场事故中就已经遇难了，而你当时重伤昏迷。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：研究会处理不了你身上棘手的损伤，如果没有意外，你会治疗无效，就此离世。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：虽然，作为一个机械生命，你身体的某些部分能够留存下来...但你的记忆、你的情感、你的意识都会消失，作为真真正正的“人”，那是彻底的死亡。" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：可是...我还活着。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：...这是另一个转折点。这一切源于哈里森夫妇对这场事故少有的关注。这实在是个小概率事件，毕竟事故规模不大，而哈里森夫妇事业有成，管理着偌大的哈里森集团实在很忙。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：唯一引人注意的地方...布兰德夫妇曾为哈里森集团研究员的身份？或者更有可能......是听说了关于你的消息，又得知你丢失了视觉代码。" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：丢失的视觉代码......对...事故后我确实失明了，可是这有什么特别引人注意的？" },
+              { who: "kp", type: "textMessage", text: "【威尔】：“失明的十来岁女孩，身遭变故，需要陪伴”，这个形象太过特殊，让他们想到一个人，一个他们投注了爱与悔恨的，特殊的人。" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：...我想，我知道这个人是谁。她叫瑞雯，是哈里森夫妇的亲生女儿，对吗？" },
+              { who: "kp", type: "textMessage", text: "【威尔】：聪明的孩子。（叹息）" },
+              { who: "kp", type: "textMessage", text: "【威尔】：瑞雯.哈里森，她是哈里森夫妇死去的女儿。和你一样，多年前在一场事故中失明。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：哈里森夫妇无疑为瑞雯提供了最好的医疗条件，但也许是因为忙于工作的他们没有意识到，缺少了父母的陪伴和关怀，骤然失去光明对于敏感的瑞雯来说是多么大的打击。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：总之，我所知道的是，事故几个月后，瑞雯确诊了抑郁症，身体明明恢复得越来越好，精神状态却每况愈下。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：最终，瑞雯用一瓶毒药结束了自己的生命。" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：...原来是这样，所以哈里森夫妇是一对失去了孩子的父母..." },
+              { who: "kp", type: "textMessage", text: "【威尔】：他们也曾有过自己的所爱，但没能竭尽全力守护她。你失去了父母，他们失去了孩子，同为痛苦中煎熬的灵魂，你们寻找着一样的救赎。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：所以当哈里森夫妇见到了你，他们立刻有了一些......大胆的想法。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：研究会的人告诉哈里森，他们对你的损伤无能为力，但也许...我有救你的能力。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：于是这对夫妇找到我，不惜一切代价求我治好你，但是不能找回你丢失的视觉代码。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：我最终同意了。毕竟我不可能看着你死去。" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：所以我不能恢复视觉，是因为他们..." },
+              { who: "kp", type: "textMessage", text: "【威尔】：他们选择了向你隐瞒事实，取走了布兰德夫妇的尸体，录取声纹和记忆，想要以你父母的身份继续照顾你，补偿他们愧对瑞雯的心理创伤。" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：所以，这大概不能算是一场绑架..." },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：可为什么我的视觉恢复了？还有床头柜上的纸条..." },
+              { who: "kp", type: "textMessage", text: "【威尔】：是我。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：我同情他们的遭遇，但不能认同他们的做法。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：你一直被蒙在鼓里，甚至没有参与切身决策的权利，而这对你并不公平。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：所以我最终还是找回了你的视觉代码，设定在几个月后启动。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：在房间里，一切电子信息都会被察觉，我留下了纸条，把选择的权利交还给你。" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：他们为什么不直接清除我的记忆？" },
+              { who: "hero", type: "textMessage", text: "【克莱尔】：到现在，我还有什么选择呢……" },
+              { who: "kp", type: "textMessage", text: "【威尔】：孩子，你的情感系统是和记忆直接关联的，如果清除记忆，你就真的变成了一堆冷漠的机器，不用说共情，你连家人的概念都不再能理解了。救赎总是有代价的。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：我可以抹去你的部分记忆，那样你就能回到哈里森夫妇身边，做他们的女儿，他们一定会竭尽所能去给你幸福。" },
+              { who: "kp", type: "textMessage", text: "【威尔】：如果你选择离开，就得拼命地跑，在走出他们的领地之前，一直会有人到处找你。" },
+              {
+                type: "choose",
+                choices: [
+                  {
+                    label: "接受现实，抹去记忆",
+                    description: "就这样吧，寡人倦了。",
+                    storyflag: "over3",
+                  },
+                  {
+                    label: "接受命运，选择出逃",
+                    description: "总有地上的生灵敢于直面雷霆的微光。",
+                    storyflag: "over4",
+                  }
+                ],
+              },
+            ]
+          }
+        ],
       },
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(5, 14)]: [
+      [utils.asGridCoord(7, 11)]: [
         {
           events: [
             {
               type: "changeMap",
-              map: "hall",
-              x: utils.withGrid(2),
-              y: utils.withGrid(8),
-              direction: "up"
+              map: "livingroom",
+              x: utils.withGrid(4),
+              y: utils.withGrid(2),
+              direction: "down"
             }
           ]
         }
       ],
-      [utils.asGridCoord(6, 14)]: [
+      [utils.asGridCoord(9, 5)]: [
         {
-          events: [
-            {
-              type: "changeMap",
-              map: "hall",
-              x: utils.withGrid(2),
-              y: utils.withGrid(8),
-              direction: "up"
-            }
+          required: ["over3"],
+          events: [//结局3
+            { type: "gameOver", path: "./gameover/over3.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
+          ]
+        },
+        {
+          required: ["over4"],
+          events: [//结局4
+            { type: "gameOver", path: "./gameover/over4.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
           ]
         }
       ],
-      [utils.asGridCoord(6, 12)]: [
+      [utils.asGridCoord(11, 5)]: [
         {
-          disqualify:["Seen_intro3"],
-          events: [
-            {type:"textMessage",text:"有第一层的经验，你已不再苦恼于谜题的破解，很快伴着滑块复位的声音，沉重的石门露出一丝缝隙，谨慎的你依旧选择了暗中观察。"},
-            { who: "hero", type: "textMessage", text: "雷比利恩：（两个人，一个看体型无疑是摩拉克斯，另外一个则是术师的打扮）" },
-            { who: "hero", type: "textMessage", text: "术士：以上就是潜伏在教会的间谍带来的情报，接下来我将把这些传达给魔王" },
-            { who: "hero", type: "textMessage", text: "摩拉克斯：原来如此（将纸递给术士），难怪国王会感派他一个人来，快去把这情报带给魔王，前方已经传来阿斯蒙蒂娅战败的消息，想必此时他已身处这层，我们已经没有多少时间可以浪费了" },
-            { who: "hero", type: "textMessage", text: "术士：大人无须担忧（挥动着手中的魔杖，吟唱起咒语）" },
-            {type:"textMessage",text:"咒语虽晦涩难懂，但你立马意识到了它的含义——传送."},
-            {type:"textMessage",text:"你顿感不妙，还未得知情报内容的你不敢估计其传播的后果，可眼前的术士明显不是平庸之辈，贸然袭击只会召至腹背受敌，但此刻你已没有多少时间去犹豫，为了完成国王的愿望，你该…….."},
-            {type:"addStoryFlag",flag:"Seen_intro3"},
-            {
-              type: "choose",
-              choices: [
-                {
-                  label: "即刻出击，打断传送",
-                  description: "",
-                  // storyflag: "Girl_Talked",
-                  events:[
-                      { type:"textMessage",text:"即使承担如此风险，你也不愿让这份情报溜走，你张开弓弦，念起熟悉的咒语，随后穿过缝隙的羽箭化作一小阵剑雨，划过空气的声音惊动了房间的二人。"},
-                      { who:"hero",type:"textMessage",text:"摩拉克斯：有敌袭！。"},
-                      { type:"textMessage",text:"机敏的术士立马张开护盾将，阵阵剑雨化作魔力消散在空气中，但那支实实在在的箭矢，精准的命中了他手中的牛皮纸，下一秒远处的钢丝连带着箭与信纸一并回收"},
-                      { who:"hero",type:"textMessage",text:"术士：可恶！一开始的目标就是情报吗。"},
-                      { who:"hero",type:"textMessage",text:"摩拉克斯：事已至此不必追悔了，我掩护你，现在开始跑还能口头传达给魔王"},
-                      { who:"hero",type:"textMessage",text:"术士：大人…….至少让我最后再帮您一把"},
-                      { type:"textMessage",text:"古老的魔杖在再一次舞动，顷刻间摩拉克斯庞大的身躯被诡异的红光所笼罩，难以预估的魔力从房间尽头传来。上一秒还沉浸在截获情报的你此刻将要面对一头真正的凶兽。"},
-                      { type: "addStoryFlag", flag: "Seen_intro2" },
-                  ]
-                },
-                {
-                  label: "等待时机，暂避锋芒",
-                  description: "",
-                  // storyflag: "badend1",
-                  events:[
-                    { type:"textMessage",text:"虽然眼前的情报十分重要，但倘若为此丢掉性命才是得不偿失，你决定等待术士的离去，再单独与摩拉克斯决斗。"},
-                    { type:"textMessage",text:"借助着传送魔法的闪光，你你将淬毒的匕首甩出，渴望用这奇袭来先发制人，但霎那间，摩拉克斯的臂膀已举至半空，快到产生残影，下一秒你的飞刀已被他稳稳接住。"},
-                    { who:"hero",type:"textMessage",text:"摩拉克斯：出来吧，雷比利恩，我知道你在哪里"},
-                    { type:"textMessage",text:"计划的破产让你不得不面对眼前的现实，你默默安慰自己，至少躲开了术士，如此恐怖的肉体若遇到魔法的加持定会将你人类的身躯轻易碾碎，你倒吸一口凉气，跨过石铸的门槛，直面眼前的凶兽"},
-                  ]
-                },
-              ],
-            },
-
+          required: ["over3"],
+          events: [//结局3
+            { type: "gameOver", path: "./gameover/over3.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
+          ]
+        },
+        {
+          required: ["over4"],
+          events: [//结局4
+            { type: "gameOver", path: "./gameover/over4.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
           ]
         }
       ],
-      [utils.asGridCoord(6, 9)]: [
+      [utils.asGridCoord(10, 4)]: [
         {
-          required:["Seen_intro3"],
-          events: [
-            { who: "hero", type: "textMessage", text: "摩拉克斯：看来的你力量真的不容小觑，就算是那个阿斯蒙蒂娅也没能减缓你的步伐。" },
-            { who: "hero", type: "textMessage", text: "雷比利恩：（冷笑）你这种体格的怪物，还会去夸赞别人的拳脚？有如此力量的你为什么会甘愿退居二线，这副躯体在战场上才来的更加自在吧。" },
-            { who: "hero", type: "textMessage", text: "摩拉克斯：如你所说，我曾抱着同样的想法参与了第四次人魔战争，和所有魔族的年轻人一样自顾自的相信其他民族的鲜血定能换来国家的繁荣与昌盛。"},
-            { who: "hero", type: "textMessage", text: "摩拉克斯：可结果呢，一纸和书便失去了318万平方公里的土地和17吨黄金，却只换来短短30余年的和平" },
-            { who: "hero", type: "textMessage", text: "雷比利恩：如此厌恶战争的你，如今又为何站在这里，你所改良的武器和军代系统，带来了远超你双手的死亡，别告诉我你不知道" },
-            { who: "hero", type: "textMessage", text: "摩拉克斯：那你呢人类，你知道那318万公里的土地可以产出多少煤矿吗？那17吨黄金能换来多少粮草吗？当你们在夺来的土地上焚火取暖时，又有多少魔族在寒风中活活饿死？" },
-            { who: "hero", type: "textMessage", text: "雷比利恩：我理解你的愤怒，但在当时看来只有这样削弱你们的国力，才能避免下一场战争的爆发" },
-            { who: "hero", type: "textMessage", text: "摩拉克斯：避免战争？在你们起草那张合约的时候战争就已经爆发了，那318万公理的要塞咽喉便是今日你们驻扎的前线，那17吨黄金换来的便是如今你手里的凶器，最清楚下一次战争将要到来并位置准备的就是你们人类自己。" },
-            { type:"textMessage",text:"面对摆在眼前的事实，你顿时哑口无言，教会只向你讲述了牺牲英烈的勇敢，国王只向你展示了帝国庞大的疆土，却没人告诉你这背后的代价"},
-            { who: "hero", type:"textMessage",text:"雷比利恩：可如今的你为什么又要选择加入这场战争呢"},
-            { who: "hero", type:"textMessage",text:"摩拉克斯：选择？假使每个人只为他自己的信念去打仗，就没有战争了，此刻我能做的至少协助魔王，避免我们失去剩下的领土。"},
-            { type:"textMessage",text:"沉重的话题让房间陷入死寂，你曾以为的战争英雄，魔王干部，此刻更像一个被卷入漩涡的普通人，而你仿佛就是下一个"},
-            { who: "hero", type:"textMessage",text:"雷比利恩：说了这么多，你我不过终究还是敌人罢了，既然帝国早已埋下仇恨的种子，那我所能做的也只有把它扼杀在摇篮中，为此我接受你的仇恨（举起手中的双间）"},
-            { who: "hero", type:"textMessage",text:"摩拉克斯：（释然的笑）同样手染鲜血的我又怎会加恨于你，王国需要残忍的人，就好像自然需要狼一样。"},
-            { type:"textMessage",text:"此刻，外面的一切对二人都不再重要，空阔的房间中，唯有两头野兽等待共舞"},
-            { type: "embedPage", container: document.querySelector(".game-container"), toEmbed: "./fight/demo_turn.html"},
+          required: ["over3"],
+          events: [//结局3
+            { type: "gameOver", path: "./gameover/over3.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
+          ]
+        },
+        {
+          required: ["over4"],
+          events: [//结局4
+            { type: "gameOver", path: "./gameover/over4.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
+          ]
+        }
+      ],
+      [utils.asGridCoord(12, 6)]: [
+        {
+          required: ["over3"],
+          events: [//结局3
+            { type: "gameOver", path: "./gameover/over3.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
+          ]
+        },
+        {
+          required: ["over4"],
+          events: [//结局4
+            { type: "gameOver", path: "./gameover/over4.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
+          ]
+        }
+      ],
+      [utils.asGridCoord(11, 7)]: [
+        {
+          required: ["over3"],
+          events: [//结局3
+            { type: "gameOver", path: "./gameover/over3.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
+          ]
+        },
+        {
+          required: ["over4"],
+          events: [//结局4
+            { type: "gameOver", path: "./gameover/over4.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
+          ]
+        }
+      ],
+      [utils.asGridCoord(9, 7)]: [
+        {
+          required: ["over3"],
+          events: [//结局3
+            { type: "gameOver", path: "./gameover/over3.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
+          ]
+        },
+        {
+          required: ["over4"],
+          events: [//结局4
+            { type: "gameOver", path: "./gameover/over4.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
+          ]
+        }
+      ],
+      [utils.asGridCoord(8, 6)]: [
+        {
+          required: ["over3"],
+          events: [//结局3
+            { type: "gameOver", path: "./gameover/over3.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
+          ]
+        },
+        {
+          required: ["over4"],
+          events: [//结局4
+            { type: "gameOver", path: "./gameover/over4.html" },//相对game.html的文件路径，而不是相对OverworldMap.js!!!
           ]
         }
       ],
     },
     walls: function () {
       let walls = {};
-      [
+      ["7,12",
+        "6,11", "5,11", "4,11", "8,11", "9,11", "10,11", "11,11", "12,11",
+        "13,10", "3,10",
+        "2,9", "10,9", "11,9", "12,9",
+        "13,8", "10,8", "9,8", "8,8", "6,8", "1,8",
+        "1,7", "4,7", "5,7", "6,7", "12,7", "8,7",
+        "13,6", "10,6", "6,6", "5,6", "4,6", "2,6", "1,6",
+        "1,5", "2,5", "3,5", "4,5", "5,5", "6,5", "13,5",
+        "13,4", "6,4", "5,4", "4,4", "3,4", "2,4", "1,4",
+        "5,3", "8,3", "13,3", "9,3",
+        "13,2", "12,2", "11,2", "10,2", "9,2", "8,2", "7,2", "6,2", "5,2",
       ].forEach(coord => {
         let [x, y] = coord.split(",");
         walls[utils.asGridCoord(x, y)] = true;
