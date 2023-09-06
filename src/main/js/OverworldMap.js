@@ -578,63 +578,7 @@ window.OverworldMaps = {
         x: utils.withGrid(3),
         y: utils.withGrid(5),
         useShadow: true,
-      },
-      vase:{
-        type:"Person",
-        x: utils.withGrid(3),
-        y: utils.withGrid(2),
-        src: "./images/characters/empty.png",
-        talking: [
-          {
-            events: [
-              { who: "interact", type: "textMessage", text: "一个破碎的罐子，或许是被人在惊慌中打破的" },
-            ]
-          }
-        ],
-      },
-      vase:{
-        type:"Person",
-        x: utils.withGrid(7),
-        y: utils.withGrid(4),
-        src: "./images/characters/empty.png",
-        talking: [
-          {
-            events: [
-              { who: "interact", type: "textMessage", text: "一团断了的锁链，想必这就是你方才听到的动静" },
-              { who: "interact", type: "textMessage", text: "什么人？你心中警铃大作" },
-            ]
-          }
-        ],
-      },
-      bookshelf:{
-        type:"Person",
-        x: utils.withGrid(2),
-        y: utils.withGrid(2),
-        src: "./images/characters/empty.png",
-        talking: [
-          {
-            events: [
-              { who: "interact", type: "textMessage", text: "一个摆满了书的书架，谁知道会不会暗藏玄机，但谨慎起见还是不要随意翻动" },
-            ]
-          }
-        ],
-      },
-      closet:{
-        type:"Person",
-        x: utils.withGrid(0),
-        y: utils.withGrid(5),
-        src: "./images/characters/empty.png",
-        talking: [
-          {
-            events: [
-              { who: "interact", type: "textMessage", text: "雕刻着复古花纹的衣柜，大小足够藏匿一个人" },
-              { who: "interact", type: "textMessage", text: "刚才的声音会不会就是从这里面发出来的？" },
-              { who: "interact", type: "textMessage", text: "你犹豫片刻还是拉开了门。" },
-              { who: "interact", type: "textMessage", text: "一只蝙蝠扑棱棱飞了出来。没有人。" },
-            ]
-          }
-        ],
-      },
+      }
     },
     cutsceneSpaces: {
       [utils.asGridCoord(2, 6)]: [
@@ -723,7 +667,75 @@ window.OverworldMaps = {
         y: utils.withGrid(5),
         useShadow: true,
       },
-
+      vase:{
+        type:"Person",
+        x: utils.withGrid(3),
+        y: utils.withGrid(2),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "一个破碎的罐子，或许是被人在惊慌中打破的" },
+            ]
+          }
+        ],
+      },
+      chain:{
+        type:"Person",
+        x: utils.withGrid(7),
+        y: utils.withGrid(4),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "一团断了的锁链，想必这就是你方才听到的动静" },
+              { who: "interact", type: "textMessage", text: "什么人？你心中警铃大作" },
+            ]
+          }
+        ],
+      },
+      bookshelf:{
+        type:"Person",
+        x: utils.withGrid(2),
+        y: utils.withGrid(2),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "一个摆满了书的书架，谁知道会不会暗藏玄机，但谨慎起见还是不要随意翻动" },
+            ]
+          }
+        ],
+      },
+      chimber:{
+        type:"Person",
+        x: utils.withGrid(2),
+        y: utils.withGrid(2),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "一个壁炉，但火焰早已熄灭。你突然无端心生一阵寒意" },
+            ]
+          }
+        ],
+      },
+      closet:{
+        type:"Person",
+        x: utils.withGrid(0),
+        y: utils.withGrid(5),
+        src: "./images/characters/empty.png",
+        talking: [
+          {
+            events: [
+              { who: "interact", type: "textMessage", text: "雕刻着复古花纹的衣柜，大小足够藏匿一个人" },
+              { who: "interact", type: "textMessage", text: "刚才的声音会不会就是从这里面发出来的？" },
+              { who: "interact", type: "textMessage", text: "你犹豫片刻还是拉开了门。" },
+              { who: "interact", type: "textMessage", text: "一只蝙蝠扑棱棱飞了出来。没有人。" },
+            ]
+          }
+        ],
+      },
       Girl:
       {
         type:"Person",
